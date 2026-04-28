@@ -136,8 +136,8 @@
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف سامح</span>
                 </button>
-                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 border-yellow-700/50 bg-yellow-950/20 hover:border-yellow-500 transition">
-                    <i class="fa-solid fa-mobile-button text-3xl text-yellow-500"></i><span class="text-xs font-bold text-yellow-300">هاتف رهف</span>
+                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
+                    <i class="fa-solid fa-mobile-button text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف رهف</span>
                 </button>
                 <button onclick="nav('screen-camera')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-camera text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">الكاميرا</span>
@@ -157,17 +157,17 @@
 
         <div id="screen-rahaf-phone" class="hidden-screen fade-in">
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 border-yellow-600 bg-yellow-950/10 shadow-2xl text-center">
-                <i class="fa-solid fa-unlock-keyhole text-4xl text-yellow-500 mb-3"></i>
-                <h2 class="text-xl font-bold text-yellow-400 mb-6">هاتف رهف</h2>
+            <div class="glass-panel p-6 border-blue-600 bg-blue-950/10 shadow-2xl text-center">
+                <i class="fa-solid fa-unlock-keyhole text-4xl text-blue-500 mb-3"></i>
+                <h2 class="text-xl font-bold text-blue-400 mb-6">هاتف رهف</h2>
                 
                 <div class="hint-chat mb-4" style="text-align: right;">
                     <p style="color: white; font-size: 13px;">"مياو! أنا شامم ريحة كذب وخيانة فايحة من الموبايل ده.. البت دي مادية وبتحب الشهرة، شوف التاريخ اللي بتعشقه وافتح الجهاز."</p>
                 </div>
 
                 <div id="rahaf-phone-locked" class="text-center">
-                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4 border-yellow-500 bg-yellow-950/20" placeholder="****">
-                    <button onclick="unlockRahafPhone()" class="w-full bg-yellow-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-yellow-700">فك الشفرة</button>
+                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4" placeholder="****">
+                    <button onclick="unlockRahafPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-blue-700">فك الشفرة</button>
                 </div>
 
                 <div id="rahaf-error" class="shamshoun-error w-full hidden-screen">
@@ -274,10 +274,15 @@
                     <div class="tech-font">
                         <p class="text-green-500 text-[11px] mb-2">> System Lock: Partition Encrypted.</p>
                         
-                        <div class="relative bg-green-950/40 p-3 rounded border border-green-800 mb-4">
-                            <p class="text-green-400 text-[10px] mb-3">> Emergency recovery hint found in memory sector 0x4F:</p>
+                        <div class="bg-green-950/40 rounded border border-green-800 mb-4 overflow-hidden">
+                            <div class="bg-green-900/50 px-3 py-2 flex justify-between items-center border-b border-green-800">
+                                <span class="text-green-400 text-[10px]">> Emergency hint:</span>
+                                <button onclick="copyBinary()" class="bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition flex items-center gap-2 shadow-lg" style="font-family: 'Share Tech Mono', monospace; direction: ltr;">
+                                    <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-text">COPY BINARY</span>
+                                </button>
+                            </div>
                             
-                            <div class="text-green-300 text-[10px] opacity-80 leading-relaxed font-mono" style="direction: ltr;">
+                            <div class="p-3 text-green-300 text-[10px] opacity-80 leading-relaxed font-mono" style="direction: ltr;">
                                 [0x004F] 01000110 01101001 01110010 01110011<br>
                                 [0x0053] 01110100 00100000 01101001 01110011<br>
                                 [0x0057] 00100000 01110100 01101000 01100101<br>
@@ -304,10 +309,6 @@
                                 [0x00AB] 01100101 01110010 01100101 01101110<br>
                                 [0x00AF] 01100011 01100101 00101110 00000000
                             </div>
-                            
-                            <button onclick="copyBinary()" class="absolute top-2 right-2 bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition flex items-center gap-2 shadow-lg" style="direction: rtl; font-family: 'Tajawal', sans-serif;">
-                                <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-text">نسخ الأرقام</span>
-                            </button>
                         </div>
 
                         <div class="flex items-center gap-2 border-b border-green-800 pb-2 mb-4">
@@ -483,10 +484,10 @@
         function copyBinary() {
             const pureBinary = "01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 00100000 01101111 01101110 01101100 01111001 00100000 01100101 01110110 01100101 01101110 00100000 01110000 01110010 01101001 01101101 01100101 00101110 00100000 01010011 01100101 01100011 01101111 01101110 01100100 00100000 01101001 01110011 00100000 01101001 01110100 01110011 00100000 01110011 01110001 01110101 01100001 01110010 01100101 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01100100 01101001 01100110 01100110 01100101 01110010 01100101 01101110 01100011 01100101 00101110 00000000";
             navigator.clipboard.writeText(pureBinary).then(() => {
-                document.getElementById('copy-text').innerText = "تم النسخ!";
+                document.getElementById('copy-text').innerText = "COPIED!";
                 document.getElementById('copy-icon').className = "fa-solid fa-check";
                 setTimeout(() => {
-                    document.getElementById('copy-text').innerText = "نسخ الأرقام";
+                    document.getElementById('copy-text').innerText = "COPY BINARY";
                     document.getElementById('copy-icon').className = "fa-regular fa-copy";
                 }, 2000);
             });
