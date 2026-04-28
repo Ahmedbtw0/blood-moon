@@ -22,7 +22,7 @@
         .glass-panel { background: rgba(15, 23, 42, 0.9); border: 1px solid #1e293b; backdrop-filter: blur(12px); border-radius: 1.5rem; }
         .tech-font { font-family: 'Share Tech Mono', monospace; direction: ltr; text-align: left; }
         
-        /* فقاعة شمشون (القط الأسود) */
+        /* فقاعة شمشون */
         .shamshoun-chat {
             background: #0f172a; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
             padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
@@ -34,7 +34,7 @@
             border: 1px solid #3b82f6;
         }
 
-        /* فقاعة فسفوس (القط الرصاصي) */
+        /* فقاعة فسفوس */
         .fasfous-chat {
             background: #1e293b; border: 1px solid #94a3b8; border-radius: 20px 20px 20px 0;
             padding: 15px 25px; position: relative; margin-bottom: 15px; text-align: right;
@@ -325,19 +325,19 @@
     </div>
 
     <script>
-        // محادثات طويلة ومخصصة للقط الأسود والرصاصي
+        // محادثات طويلة وكوميدية من غير إشارة صريحة للألوان
         const catChats = [
             {
-                shamshoun: "مياو المياو باشا إنت لسه هنا؟ الجو حر أوي والكرش تقيل ومحتاج أمدده على السيراميك.",
+                shamshoun: "مياو المياو باشا إنت لسه هنا؟ الجو حر أوي ومحتاج أمدد على السيراميك.",
                 fasfous: "يا عم ركز معاه خليه يخلص، أنا شامم ريحة دراي فود بالفراخ جاية من الشقة اللي جنبنا.",
-                shamshoun2: "دراي فود إيه؟ إحنا كقطط سودا شيك مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
-                fasfous2: "طب نام إنت يا سي الأسود، وأنا كقط رصاصي خفيف هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك."
+                shamshoun2: "دراي فود إيه؟ إحنا مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
+                fasfous2: "طب نام إنت، وأنا هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك."
             },
             {
                 shamshoun: "الدم اللي في القضية دي كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح اللي وقعت في المطبخ.",
-                fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها على فروتي الرصاصي النضيفة دي.",
+                fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها.",
                 shamshoun2: "إنت قط فرفور أصلاً، المباحث دي محتاجة قطط شوارع ناشفة زيي بتنام على كبابيت العربيات.",
-                fasfous2: "يا عم الناشف إنت، امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب وفروتك السودا وقفت."
+                fasfous2: "يا عم الناشف إنت، امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب وتجري."
             },
             {
                 shamshoun: "يا فسفوس، ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف من الصبح!",
@@ -346,14 +346,13 @@
                 fasfous2: "دليل إيه؟ إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية وكلنا بالهنا والشفا."
             },
             {
-                shamshoun: "أنا حاسس إن عيني زغلت من كتر التبحيق في الشاشات.. فروتي السودا بتسحب الحرارة كلها.",
-                fasfous: "أنا قولتلك خليك في الظلة، أنا فروتي الرصاصي عاكسة للإضاءة ومظبطة الأداء.",
-                shamshoun2: "عاكسة إيه بس، ده إنت شبه حتة السلك المواعين المبلولة.",
-                fasfous2: "سلك مواعين؟ طب والله لأسيبلك القضية وأروح أنام في كرتونة التلاجة الجديدة."
+                shamshoun: "أنا حاسس إن عيني زغلت من كتر التبحيق في الشاشات.. أنا محتاج أنام 16 ساعة عشان أركز.",
+                fasfous: "أنا قولتلك نام بدري، بس إنت بتفضل سهران تصطاد دبان في الضلمة.",
+                shamshoun2: "دبان إيه؟ أنا بصطاد أفكار وحلول للقضية.. إنت بس اللي دماغك فاضية.",
+                fasfous2: "دماغي فاضية؟ طب والله لأسيبلك القضية وأروح أنام في كرتونة التلاجة الجديدة."
             }
         ];
 
-        // دي الدالة اللي بتغير المحادثة في الداشبورد
         function loadRandomChat() {
             const chatBox = document.getElementById('random-cat-chat');
             const randomIdx = Math.floor(Math.random() * catChats.length);
@@ -374,7 +373,6 @@
             `;
         }
 
-        // التعديل هنا: كل ما يرجع للداشبورد، يشغل المحادثة الجديدة!
         function nav(screenId) {
             document.querySelectorAll('.fade-in').forEach(s => s.classList.add('hidden-screen'));
             document.getElementById(screenId).classList.remove('hidden-screen');
@@ -388,7 +386,7 @@
         function handleLogin() {
             const pass = document.getElementById('login-pass').value.trim().toLowerCase();
             if(pass === 'meow') {
-                nav('screen-dashboard'); // الدالة nav هتشغل loadRandomChat أوتوماتيك
+                nav('screen-dashboard'); 
             }
             else document.getElementById('login-error').classList.remove('hidden-screen');
         }
