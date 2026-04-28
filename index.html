@@ -116,16 +116,16 @@
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold">هاتف سامح</span>
                 </button>
-                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 border-purple-800/50 bg-purple-900/20 hover:border-purple-500 transition">
-                    <i class="fa-solid fa-mobile-button text-3xl text-purple-400"></i><span class="text-xs font-bold text-purple-300">هاتف رهف</span>
+                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 border-yellow-700/50 bg-yellow-950/20 hover:border-yellow-500 transition">
+                    <i class="fa-solid fa-mobile-button text-3xl text-yellow-500"></i><span class="text-xs font-bold text-yellow-300">هاتف رهف</span>
                 </button>
                 <button onclick="nav('screen-camera')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-camera text-3xl text-slate-300"></i><span class="text-xs font-bold">الكاميرا</span>
                 </button>
-                <button onclick="nav('screen-email')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
-                    <i class="fa-solid fa-laptop-code text-3xl text-slate-300"></i><span class="text-xs font-bold">لابتوب كمال</span>
+                <button onclick="nav('screen-email')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition hover:border-blue-500 transition grid-cols-2">
+                    <i class="fa-solid fa-laptop-code text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">لابتوب كمال</span>
                 </button>
-                <button onclick="nav('screen-traffic')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition grid-cols-2">
+                <button onclick="nav('screen-traffic')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition hover:border-blue-500 transition">
                     <i class="fa-solid fa-car-on text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">المرور</span>
                 </button>
             </div>
@@ -137,24 +137,24 @@
 
         <div id="screen-rahaf-phone" class="hidden-screen fade-in">
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 border-purple-600 bg-purple-950/10 shadow-2xl shadow-purple-900/20 text-center">
-                <i class="fa-solid fa-unlock-keyhole text-4xl text-purple-500 mb-3"></i>
-                <h2 class="text-xl font-bold text-purple-400 mb-6">هاتف رهف</h2>
+            <div class="glass-panel p-6 border-yellow-600 bg-yellow-950/10 shadow-2xl shadow-yellow-900/20 text-center">
+                <i class="fa-solid fa-unlock-keyhole text-4xl text-yellow-500 mb-3"></i>
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">هاتف رهف</h2>
                 
                 <div class="hint-chat mb-4" style="text-align: right;">
-                    <p style="color: white; font-size: 13px;">"رهف دي مكارة.. موبايلها ده عليه بلاوي، فك الشفرة عشان نشوف إيه اللي بتخبيه ورا المكتب."</p>
+                    <p style="color: white; font-size: 13px;">"مياو! أنا شامم ريحة كذب وخيانة فايحة من الموبايل ده.. البت دي مادية وبتحب الشهرة، شوف التاريخ اللي بتعشقه وافتح الجهاز."</p>
                 </div>
 
                 <div id="rahaf-phone-locked" class="text-center">
-                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4 border-purple-500 bg-purple-950/20" placeholder="****">
-                    <button onclick="unlockRahafPhone()" class="w-full bg-purple-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-purple-700">فك الشفرة</button>
+                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4 border-yellow-500 bg-yellow-950/20" placeholder="****">
+                    <button onclick="unlockRahafPhone()" class="w-full bg-yellow-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-yellow-700">فك الشفرة</button>
                 </div>
 
                 <div id="rahaf-phone-unlocked" class="hidden-screen mt-4">
                     <div class="p-3 bg-green-500/10 border border-green-500/30 rounded-xl text-center mb-2"><span class="text-green-500 text-xs font-bold">✅ تم الاسترجاع بنجاح</span></div>
                     <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/ rahaf_kemal_1.png')"><img src="https://i.ibb.co/rahaf_kemal_1.png"></div>
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/rahaf_kemal_2.png')"><img src="https://i.ibb.co/rahaf_kemal_2.png"></div>
+                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/Gvkzc5cM/image.png')"><img src="https://i.ibb.co/Gvkzc5cM/image.png"></div>
+                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/rRhgmyFt/2.png')"><img src="https://i.ibb.co/rRhgmyFt/2.png"></div>
                     </div>
                 </div>
             </div>
@@ -240,7 +240,7 @@
                     <div class="tech-font">
                         <p class="text-green-500 text-[11px] mb-2">> Partition Encrypted.</p>
                         <p class="text-green-400 text-[10px] break-words mb-4 opacity-80 leading-relaxed">
-                            01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01100100 01101111 01110101 01100010 01101100 01100101 00100000 01110011 01100101 01100011 01101111 01101110 01100100 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01111010 01100101 01110010 01101111 00101110 00100000 01010100 01101111 01110100 01100001 01101100 00100000 01101001 01110011 00100000 00110001 00110010 00101110
+                            01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01100100 01101111 01110101 01100010 01101100 01100101 00100000 01110011 01100101 01100011 01101111 01101110 01100100 00101110 00100000 01010100 01101000 01101001 01110011 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01111010 01100101 01110010 01101111 00101110 00100000 01010100 01101111 01110100 01100001 01101100 00100000 01101001 01110011 00100000 00110001 00110010 00101110
                         </p>
                         <div class="flex items-center gap-2 border-b border-green-800 pb-2">
                             <span class="text-green-500 text-lg">root:~#</span>
@@ -355,19 +355,25 @@
                 shamshoun: "مياو المياو باشا إنت لسه هنا؟ الجو حر أوي ومحتاج أمدد على السيراميك.",
                 fasfous: "يا عم ركز معاه خليه يخلص، أنا شامم ريحة دراي فود بالفراخ جاية من الشقة اللي جنبنا.",
                 shamshoun2: "دراي فود إيه؟ إحنا مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
-                fasfous2: "طب نام إنت، وأنا هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك علطول."
+                fasfous2: "طب نام إنت وأنا هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك علطول."
             },
             {
                 shamshoun: "الدم اللي في القضية دي كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح اللي وقعت في المطبخ.",
                 fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها.",
                 shamshoun2: "إنت قط فرفور أصلاً، المباحث دي محتاجة قطط شوارع ناشفة زيي بتنام على كبابيت العربيات.",
-                fasfous2: "يا عم الناشف إنت، امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب وتجري."
+                fasfous2: "يا عم الناشف إنت امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب وتجري."
             },
             {
-                shamshoun: "يا فسفوس، ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف من الصبح!",
-                fasfous: "يا عم سيبني، الدبانة دي المشتبه به رقم واحد بالنسبالي.. بتطير بشكل مريب ومحتاجة انقضاض.",
-                shamshoun2: "دي دبانة يا متخلف! ركز في صور الكاميرا والموبايلات دي يمكن نلاقي دليل نخلص بيه من الشغلانة دي.",
-                fasfous2: "دليل إيه؟ إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية وكلنا بالهنا والشفا."
+                shamshoun: "يا فسفوس ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف من الصبح!",
+                fasfous: "يا عم سيبني الدبانة دي المشتبه به رقم واحد بالنسبالي شكلها مريب ومحتاجة انقضاض.",
+                shamshoun2: "دي دبانة يا متخلف ركز في صور الكاميرا والموبايلات دي يمكن نلاقي دليل نخلص بيه من الشغلانة دي.",
+                fasfous2: "دليل إيه إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية وكلنا بالهنا والشفا."
+            },
+            {
+                shamshoun: "أنا حاسس إن عيني زغلت من كتر التبحيق في الشاشات.. أنا محتاج أنام 16 ساعة عشان أركز.",
+                fasfous: "أنا قولتلك نام بدري، بس إنت بتفضل سهران تصطاد دبان في الضلمة.",
+                shamshoun2: "دبان إيه؟ أنا بصطاد أفكار وحلول للقضية.. إنت بس اللي دماغك فاضية.",
+                fasfous2: "دماغي فاضية؟ طب والله لأسيبلك القضية وأروح أنام في كرتونة التلاجة الجديدة."
             }
         ];
 
