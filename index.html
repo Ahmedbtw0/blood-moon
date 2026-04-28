@@ -25,21 +25,21 @@
         /* فقاعة شمشون */
         .shamshoun-chat {
             background: #1e293b; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
-            padding: 15px 25px; position: relative; margin-top: 10px; margin-bottom: 10px; text-align: right;
+            padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
         }
         .shamshoun-chat::after {
             content: "🐾 شمشون:"; position: absolute; top: -12px; right: 20px;
-            background: #3b82f6; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px;
+            background: #3b82f6; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
         }
 
         /* فقاعة فسفوس */
         .fasfous-chat {
             background: #1e293b; border: 1px solid #10b981; border-radius: 20px 20px 20px 0;
-            padding: 15px 25px; position: relative; margin-bottom: 20px; text-align: right;
+            padding: 15px 25px; position: relative; margin-bottom: 15px; text-align: right;
         }
         .fasfous-chat::after {
             content: "🐟 فسفوس:"; position: absolute; top: -12px; left: 20px;
-            background: #10b981; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px;
+            background: #10b981; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
         }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="shamshoun-chat w-full shadow-xl" style="margin-top: 30px;">
-                <p style="color: white; font-size: 14px;">"مياو المياو باشا! اكتب الباسورد (meow) بسرعة عشان علبة التونة بتاعتي مستنية."</p>
+                <p style="color: white; font-size: 14px;">"مياو المياو باشا! اكتب الباسورد (meow) بسرعة عشان علبة التونة بتاعتي مستنية ورا المكتب."</p>
             </div>
         </div>
 
@@ -99,7 +99,7 @@
 
             <div id="random-cat-chat"></div>
             
-            <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="grid grid-cols-2 gap-4 mb-6 mt-4">
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold">هاتف الضحية</span>
                 </button>
@@ -120,10 +120,14 @@
         </div>
 
         <div id="screen-camera" class="hidden-screen fade-in flex flex-col h-full">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
             <div class="glass-panel p-6 flex-1 overflow-y-auto">
                 <h2 class="text-xl font-bold text-red-500 mb-4 text-center tracking-widest tech-font">SD_RECOVERY</h2>
                 
+                <div class="shamshoun-chat mb-4">
+                    <p style="color: white; font-size: 13px;">"الشاشة دي بتوجع عيني.. الأرقام عمالة تنط زي الفيران، شوفلها صرفة أنا هروح أعمل قيلولة تحت الكرسي."</p>
+                </div>
+
                 <div id="camera-locked" class="bg-black p-5 rounded-xl border-2 border-red-900 shadow-lg">
                     <div class="tech-font">
                         <p class="text-red-500 text-[11px] mb-2 animate-pulse">FATAL ERROR: SECTORS_CORRUPTED</p>
@@ -158,10 +162,14 @@
         </div>
 
         <div id="screen-phone" class="hidden-screen fade-in">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
             <div class="glass-panel p-6">
-                <h2 class="text-xl font-bold text-blue-400 mb-6 text-center">هاتف الضحية</h2>
+                <h2 class="text-xl font-bold text-blue-400 mb-4 text-center">هاتف الضحية</h2>
                 
+                <div class="shamshoun-chat mb-4">
+                    <p style="color: white; font-size: 13px;">"البشر دول معقدين أوي! تليفون ورسايل ووجع دماغ.. إحنا القطط بناكل وننام ومريحين بالنا، افتح البتاع ده خلينا نخلص."</p>
+                </div>
+
                 <div id="phone-locked" class="text-center">
                     <input type="number" id="phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4" placeholder="****">
                     <button onclick="unlockPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold">فتح الهاتف</button>
@@ -179,10 +187,14 @@
         </div>
 
         <div id="screen-email" class="hidden-screen fade-in flex flex-col h-full">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
             <div class="glass-panel p-6 flex-1 overflow-y-auto">
                 <h2 class="text-xl font-bold text-green-500 mb-4 text-center tracking-widest tech-font">DECRYPTION</h2>
                 
+                <div class="shamshoun-chat mb-4">
+                    <p style="color: white; font-size: 13px;">"الشاشة الخضرا دي مرعبة بجد! حاسس إن في كلب روت وايلر هيطلع منها.. فك الشفرة دي أنا جسمي قشعر."</p>
+                </div>
+
                 <div id="email-locked" class="bg-black p-5 rounded-xl border-2 border-green-900 shadow-lg">
                     <div class="tech-font">
                         <p class="text-green-500 text-[11px] mb-2">> Partition Encrypted.</p>
@@ -207,10 +219,14 @@
         </div>
 
         <div id="screen-traffic" class="hidden-screen fade-in">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
             <div class="glass-panel p-6 text-center border-t-4 border-blue-600">
-                <h2 class="text-2xl font-bold text-blue-400 mb-6">قاعدة بيانات المرور</h2>
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">قاعدة بيانات المرور</h2>
                 
+                <div class="shamshoun-chat mb-6">
+                    <p style="color: white; font-size: 13px;">"عربيات ومرور ولوحات معدنية.. أنا مابحبش العربيات دي من ساعة ما ديلى اتزنق في باب ميكروباص وأنا صغير."</p>
+                </div>
+
                 <div id="traffic-search">
                     <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 mb-6">
                         <p class="text-[10px] text-slate-400 text-right mb-2">اللوحة المعدنية (حروف - أرقام):</p>
@@ -260,6 +276,11 @@
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
             <div id="final-container" class="glass-panel p-6 text-center border-t-4 border-red-600 bg-red-950/20">
                 <h2 class="text-2xl font-bold text-red-500 mb-2">CASE CLOSURE</h2>
+                
+                <div class="shamshoun-chat mb-4" style="text-align: center;">
+                    <p style="color: white; font-size: 13px;">"دي اللحظة الحاسمة يا مياو باشا! اكتب اسم القاتل الحقيقي، ركز أرجوك عشان لو غلطت السيستم هيقفل وهنطرد إحنا الاتنين في الشارع من غير دراي فود!"</p>
+                </div>
+
                 <div class="bg-red-900/40 border border-red-600 p-3 rounded mb-6 text-left">
                     <p class="text-red-400 font-bold tech-font text-xs uppercase animate-pulse">! WARNING: ONE ATTEMPT ONLY !</p>
                     <p class="text-red-200 tech-font text-[10px] mt-1">An incorrect code will trigger a permanent system lockdown.</p>
@@ -291,31 +312,28 @@
     </div>
 
     <script>
-        // مصفوفة المحادثات الكوميدية
+        // محادثات طويلة بين شمشون وفسفوس للداشبورد
         const catChats = [
             {
-                shamshoun: "مياو المياو باشا اتأخر.. تفتكر جاب التونة وهو جاي؟",
-                fasfous: "يا رب تكون تونة دايت، الكرش كبر ومبقتش عارف أنط من على التلاجة."
+                shamshoun: "مياو المياو باشا إنت لسه هنا؟ الجو حر أوي والكرش تقيل ومحتاج أمدده على السيراميك.",
+                fasfous: "يا عم ركز معاه خليه يخلص، أنا شامم ريحة دراي فود بالفراخ جاية من الشقة اللي جنبنا.",
+                shamshoun2: "دراي فود إيه؟ إحنا مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
+                fasfous2: "طب نام إنت وأنا هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك علطول."
             },
             {
-                shamshoun: "الدم هنا كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح.",
-                fasfous: "بطل قرف يا شمشون! أنا لسه واكل دراي فود بطعم السلمون ومش عايز أرجع."
+                shamshoun: "الدم اللي في القضية دي كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح اللي وقعت في المطبخ.",
+                fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها.",
+                shamshoun2: "إنت قط فرفور أصلاً، المباحث دي محتاجة قطط شوارع ناشفة زيي بتنام على كبابيت العربيات.",
+                fasfous2: "يا عم الناشف إنت، امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب."
             },
             {
-                shamshoun: "يا فسفوس، ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف!",
-                fasfous: "يا عم سيبني، الدبانة دي المشتبه به رقم واحد بالنسبالي.. شكلها مريب."
-            },
-            {
-                shamshoun: "أنا نمت على الكيبورد ومسحت نص الأدلة بالغلط.. تفتكر الباشا هياخد باله؟",
-                fasfous: "اعمل نفسك بتنضف الكيبورد بديلك.. اعمل نفسك قطة بريئة!"
-            },
-            {
-                shamshoun: "تفتكر مين القاتل يا فسفوس؟ أنا شاكك في الكلب بتاع الجيران.",
-                fasfous: "كلب الجيران ده جبان أصلاً بيخاف من خياله، ركز في الورق اللي قدامك."
+                shamshoun: "يا فسفوس، ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف من الصبح!",
+                fasfous: "يا عم سيبني، الدبانة دي المشتبه به رقم واحد بالنسبالي.. بتطير بشكل مريب.",
+                shamshoun2: "دي دبانة يا متخلف! ركز في صور الكاميرا والموبايلات المتقفلة دي يمكن نلاقي دليل.",
+                fasfous2: "دليل إيه؟ إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية."
             }
         ];
 
-        // دالة لعرض محادثة عشوائية
         function loadRandomChat() {
             const chatBox = document.getElementById('random-cat-chat');
             const randomIdx = Math.floor(Math.random() * catChats.length);
@@ -326,6 +344,12 @@
                 </div>
                 <div class="fasfous-chat shadow-lg fade-in">
                     <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.fasfous}"</p>
+                </div>
+                <div class="shamshoun-chat shadow-lg fade-in">
+                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.shamshoun2}"</p>
+                </div>
+                <div class="fasfous-chat shadow-lg fade-in">
+                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.fasfous2}"</p>
                 </div>
             `;
         }
@@ -340,7 +364,7 @@
             const pass = document.getElementById('login-pass').value.trim().toLowerCase();
             if(pass === 'meow') {
                 nav('screen-dashboard');
-                loadRandomChat(); // استدعاء المحادثة العشوائية عند الدخول للداشبورد
+                loadRandomChat();
             }
             else document.getElementById('login-error').classList.remove('hidden-screen');
         }
