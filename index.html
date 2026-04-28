@@ -22,13 +22,24 @@
         .glass-panel { background: rgba(15, 23, 42, 0.9); border: 1px solid #1e293b; backdrop-filter: blur(12px); border-radius: 1.5rem; }
         .tech-font { font-family: 'Share Tech Mono', monospace; direction: ltr; text-align: left; }
         
+        /* فقاعة شمشون */
         .shamshoun-chat {
             background: #1e293b; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
-            padding: 15px 25px; position: relative; margin-top: 20px; text-align: right;
+            padding: 15px 25px; position: relative; margin-top: 10px; margin-bottom: 10px; text-align: right;
         }
         .shamshoun-chat::after {
             content: "🐾 شمشون:"; position: absolute; top: -12px; right: 20px;
             background: #3b82f6; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px;
+        }
+
+        /* فقاعة فسفوس */
+        .fasfous-chat {
+            background: #1e293b; border: 1px solid #10b981; border-radius: 20px 20px 20px 0;
+            padding: 15px 25px; position: relative; margin-bottom: 20px; text-align: right;
+        }
+        .fasfous-chat::after {
+            content: "🐟 فسفوس:"; position: absolute; top: -12px; left: 20px;
+            background: #10b981; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px;
         }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
@@ -66,15 +77,16 @@
                     <input type="email" id="login-email" class="input-field w-full p-4 rounded-xl" value="admin@police.com" placeholder="البريد الإلكتروني">
                     <input type="password" id="login-pass" class="input-field w-full p-4 rounded-xl" placeholder="كلمة المرور">
                     <button onclick="handleLogin()" class="w-full bg-blue-600 hover:bg-blue-500 p-4 rounded-xl font-bold shadow-lg mt-4">تسجيل الدخول</button>
+                    <p id="login-error" class="text-red-500 text-sm hidden-screen">بيانات الدخول غير صحيحة!</p>
                 </div>
             </div>
-            <div class="shamshoun-chat w-full shadow-xl">
+            <div class="shamshoun-chat w-full shadow-xl" style="margin-top: 30px;">
                 <p style="color: white; font-size: 14px;">"مياو المياو باشا! اكتب الباسورد (meow) بسرعة عشان علبة التونة بتاعتي مستنية."</p>
             </div>
         </div>
 
         <div id="screen-dashboard" class="hidden-screen fade-in">
-            <div class="flex items-center justify-between mb-8 mt-4 bg-slate-900/80 p-4 rounded-2xl border border-blue-500/30 shadow-lg">
+            <div class="flex items-center justify-between mb-4 mt-4 bg-slate-900/80 p-4 rounded-2xl border border-blue-500/30 shadow-lg">
                 <div class="flex items-center gap-3">
                     <img src="https://i.ibb.co/RT3PzqQz/Hello-yes-I-would-like-to-apply-to-a-job-However-JPG.jpg" class="w-12 h-12 rounded-full border-2 border-blue-500 object-cover">
                     <div>
@@ -85,6 +97,8 @@
                 <span class="text-[10px] text-slate-400 tech-font">#CASE_9842</span>
             </div>
 
+            <div id="random-cat-chat"></div>
+            
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold">هاتف الضحية</span>
@@ -161,10 +175,6 @@
                         <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/whQWQKvk/Picsart-26-04-28-14-52-26-892.png')"><img src="https://i.ibb.co/whQWQKvk/Picsart-26-04-28-14-52-26-892.png"></div>
                     </div>
                 </div>
-                
-                <div class="shamshoun-chat mt-6" id="phone-hint">
-                    <p style="color: white; font-size: 13px;">"تليفون القتيل.. يا ترى كان بيكلم مين قبل ما يموت؟ أنا لو مكانه كنت كلمت سماك المنطقة يبعتلي جمبري."</p>
-                </div>
             </div>
         </div>
 
@@ -177,7 +187,7 @@
                     <div class="tech-font">
                         <p class="text-green-500 text-[11px] mb-2">> Partition Encrypted.</p>
                         <p class="text-green-400 text-[10px] break-words mb-4 opacity-80 leading-relaxed">
-                            01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01100100 01101111 01110101 01100010 01101100 01100101 00100000 01110011 01100101 01100011 01101111 01101110 01100100 00101110 00100000 01010100 01101000 01101001 01110011 00100000 01100100 01101001 01100111 01101001 01110100 00100000 01110011 01110101 01101101 00101110
+                            01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01100100 01101111 01110101 01100010 01101100 01100101 00100000 01110011 01100101 01100011 01101111 01101110 01100100 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01111010 01100101 01110010 01101111 00101110 00100000 01010100 01101111 01110100 01100001 01101100 00100000 01101001 01110011 00100000 00110001 00110010 00101110
                         </p>
                         <div class="flex items-center gap-2 border-b border-green-800 pb-2">
                             <span class="text-green-500 text-lg">root:~#</span>
@@ -281,6 +291,45 @@
     </div>
 
     <script>
+        // مصفوفة المحادثات الكوميدية
+        const catChats = [
+            {
+                shamshoun: "مياو المياو باشا اتأخر.. تفتكر جاب التونة وهو جاي؟",
+                fasfous: "يا رب تكون تونة دايت، الكرش كبر ومبقتش عارف أنط من على التلاجة."
+            },
+            {
+                shamshoun: "الدم هنا كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح.",
+                fasfous: "بطل قرف يا شمشون! أنا لسه واكل دراي فود بطعم السلمون ومش عايز أرجع."
+            },
+            {
+                shamshoun: "يا فسفوس، ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف!",
+                fasfous: "يا عم سيبني، الدبانة دي المشتبه به رقم واحد بالنسبالي.. شكلها مريب."
+            },
+            {
+                shamshoun: "أنا نمت على الكيبورد ومسحت نص الأدلة بالغلط.. تفتكر الباشا هياخد باله؟",
+                fasfous: "اعمل نفسك بتنضف الكيبورد بديلك.. اعمل نفسك قطة بريئة!"
+            },
+            {
+                shamshoun: "تفتكر مين القاتل يا فسفوس؟ أنا شاكك في الكلب بتاع الجيران.",
+                fasfous: "كلب الجيران ده جبان أصلاً بيخاف من خياله، ركز في الورق اللي قدامك."
+            }
+        ];
+
+        // دالة لعرض محادثة عشوائية
+        function loadRandomChat() {
+            const chatBox = document.getElementById('random-cat-chat');
+            const randomIdx = Math.floor(Math.random() * catChats.length);
+            const chat = catChats[randomIdx];
+            chatBox.innerHTML = `
+                <div class="shamshoun-chat shadow-lg fade-in">
+                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.shamshoun}"</p>
+                </div>
+                <div class="fasfous-chat shadow-lg fade-in">
+                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.fasfous}"</p>
+                </div>
+            `;
+        }
+
         function nav(screenId) {
             document.querySelectorAll('.fade-in').forEach(s => s.classList.add('hidden-screen'));
             document.getElementById(screenId).classList.remove('hidden-screen');
@@ -289,7 +338,10 @@
 
         function handleLogin() {
             const pass = document.getElementById('login-pass').value.trim().toLowerCase();
-            if(pass === 'meow') nav('screen-dashboard');
+            if(pass === 'meow') {
+                nav('screen-dashboard');
+                loadRandomChat(); // استدعاء المحادثة العشوائية عند الدخول للداشبورد
+            }
             else document.getElementById('login-error').classList.remove('hidden-screen');
         }
 
