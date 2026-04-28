@@ -46,11 +46,30 @@
             background: #991b1b; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
             border: 1px solid #ef4444;
         }
+
+        /* فقاعة شمشون للاحتفال بالفوز */
+        .shamshoun-victory {
+            background: #064e3b; border: 2px solid #10b981; border-radius: 20px 20px 0 20px;
+            padding: 20px 25px; position: relative; margin-top: 20px; margin-bottom: 20px; text-align: right;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            animation: pulse-green 2s infinite;
+        }
+        .shamshoun-victory::after {
+            content: "🏆 القائد الأعلى مياو المياو:"; position: absolute; top: -15px; right: 20px;
+            background: #047857; color: white; font-size: 14px; padding: 4px 15px; border-radius: 8px; font-weight: bold;
+            border: 1px solid #34d399;
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
             50% { transform: translateX(5px); }
             75% { transform: translateX(-5px); }
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         /* فقاعة فسفوس */
@@ -136,8 +155,8 @@
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف سامح</span>
                 </button>
-                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
-                    <i class="fa-solid fa-mobile-button text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف رهف</span>
+                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 border-yellow-700/50 bg-yellow-950/20 hover:border-yellow-500 transition">
+                    <i class="fa-solid fa-mobile-button text-3xl text-yellow-500"></i><span class="text-xs font-bold text-yellow-300">هاتف رهف</span>
                 </button>
                 <button onclick="nav('screen-camera')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-camera text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">الكاميرا</span>
@@ -157,17 +176,19 @@
 
         <div id="screen-rahaf-phone" class="hidden-screen fade-in">
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 border-blue-600 bg-blue-950/10 shadow-2xl text-center">
-                <i class="fa-solid fa-unlock-keyhole text-4xl text-blue-500 mb-3"></i>
-                <h2 class="text-xl font-bold text-blue-400 mb-6">هاتف رهف</h2>
+            <div class="glass-panel p-6 border-yellow-600 bg-yellow-950/10 shadow-2xl text-center">
+                <i class="fa-solid fa-unlock-keyhole text-4xl text-yellow-500 mb-3"></i>
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">هاتف رهف</h2>
                 
                 <div class="hint-chat mb-4" style="text-align: right;">
                     <p style="color: white; font-size: 13px;">"مياو! أنا شامم ريحة كذب وخيانة فايحة من الموبايل ده.. البت دي مادية وبتحب الشهرة، شوف التاريخ اللي بتعشقه وافتح الجهاز."</p>
                 </div>
 
                 <div id="rahaf-phone-locked" class="text-center">
-                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4" placeholder="****">
-                    <button onclick="unlockRahafPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-blue-700">فك الشفرة</button>
+                    <div class="relative w-full mb-4">
+                        <input type="password" inputmode="numeric" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] border-yellow-500 bg-yellow-950/20" placeholder="****">
+                    </div>
+                    <button onclick="unlockRahafPhone()" class="w-full bg-yellow-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-yellow-700">فك الشفرة</button>
                 </div>
 
                 <div id="rahaf-error" class="shamshoun-error w-full hidden-screen">
@@ -480,7 +501,6 @@
             }
         }
 
-        // دالة لنسخ الأرقام الثنائية فقط
         function copyBinary() {
             const pureBinary = "01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 00100000 01101111 01101110 01101100 01111001 00100000 01100101 01110110 01100101 01101110 00100000 01110000 01110010 01101001 01101101 01100101 00101110 00100000 01010011 01100101 01100011 01101111 01101110 01100100 00100000 01101001 01110011 00100000 01101001 01110100 01110011 00100000 01110011 01110001 01110101 01100001 01110010 01100101 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01100100 01101001 01100110 01100110 01100101 01110010 01100101 01101110 01100011 01100101 00101110 00000000";
             navigator.clipboard.writeText(pureBinary).then(() => {
@@ -546,7 +566,6 @@
         }
 
         function unlockEmail() {
-            // الباسورد الجديد
             if(document.getElementById('email-pin').value === '2462') {
                 document.getElementById('email-locked').classList.add('hidden-screen');
                 document.getElementById('email-error').classList.add('hidden-screen');
@@ -574,7 +593,10 @@
             const ans = document.getElementById('final-name').value.trim();
             if(ans.includes('طارق')) {
                 document.getElementById('final-container').innerHTML = `
-                    <div class="bg-green-600/20 border-2 border-green-500 p-6 rounded-2xl">
+                    <div class="shamshoun-victory fade-in mb-6">
+                        <p style="color: white; font-size: 15px; line-height: 1.8;">"بسم الله الرحمن الرحيم، أيها الشعب العظيم، أيها المحققون الأبطال! بصفتي القائد الأعلى مياو المياو، أعلن رسمياً إغلاق القضية بنجاح مبهر! لقد أثبتم أنكم أذكى من ثعلب ماكر، وأسرع من كلب بلدي يجري ورا موتوسيكل.. أنا فخور بكم! والآن، استلموا الجايزة الكبرى وافتحوا الخزنة، وأنا هروح أفتح علبة تونة احتفالاً بالنصر العظيم.. تحيا المباحث! مياااااااو! 🐾🫡"</p>
+                    </div>
+                    <div class="bg-green-600/20 border-2 border-green-500 p-6 rounded-2xl fade-in" style="animation-delay: 0.5s;">
                         <h3 class="text-2xl font-bold text-green-500 mb-4">🏆 CASE CLOSED</h3>
                         <p class="text-xs text-slate-300 mb-2 font-bold uppercase tech-font">Final Vault Code:</p>
                         <div class="text-5xl font-bold text-white tracking-[1rem] bg-slate-900 py-4 rounded-2xl border border-slate-700 tech-font">742</div>
