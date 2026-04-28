@@ -22,7 +22,7 @@
         .glass-panel { background: rgba(15, 23, 42, 0.9); border: 1px solid #1e293b; backdrop-filter: blur(12px); border-radius: 1.5rem; }
         .tech-font { font-family: 'Share Tech Mono', monospace; direction: ltr; text-align: left; }
         
-        /* فقاعة شمشون العادية */
+        /* فقاعة شمشون */
         .shamshoun-chat {
             background: #0f172a; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
             padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
@@ -34,7 +34,7 @@
             border: 1px solid #3b82f6;
         }
 
-        /* فقاعة شمشون في حالة الخطأ (جديدة) */
+        /* فقاعة شمشون للخطأ */
         .shamshoun-error {
             background: #3f0f15; border: 1px solid #ef4444; border-radius: 20px 20px 0 20px;
             padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
@@ -83,14 +83,7 @@
         .input-field { background: #0f172a; border: 1px solid #334155; color: white; text-align: center; }
         .input-field:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
 
-        .system-locked-bg {
-            background-color: #450a0a !important;
-            background-image: none !important;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+        .system-locked-bg { background-color: #450a0a !important; background-image: none !important; display: flex; justify-content: center; align-items: center; height: 100vh; }
     </style>
 </head>
 <body class="antialiased bg-tech" id="main-body">
@@ -143,8 +136,8 @@
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف سامح</span>
                 </button>
-                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
-                    <i class="fa-solid fa-mobile-button text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف رهف</span>
+                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 border-yellow-700/50 bg-yellow-950/20 hover:border-yellow-500 transition">
+                    <i class="fa-solid fa-mobile-button text-3xl text-yellow-500"></i><span class="text-xs font-bold text-yellow-300">هاتف رهف</span>
                 </button>
                 <button onclick="nav('screen-camera')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-camera text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">الكاميرا</span>
@@ -152,7 +145,7 @@
                 <button onclick="nav('screen-email')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-laptop-code text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">لابتوب كمال</span>
                 </button>
-                <button onclick="nav('screen-traffic')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
+                <button onclick="nav('screen-traffic')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition grid-cols-2">
                     <i class="fa-solid fa-car-on text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">المرور</span>
                 </button>
             </div>
@@ -164,20 +157,17 @@
 
         <div id="screen-rahaf-phone" class="hidden-screen fade-in">
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 border-blue-600 bg-blue-950/10 shadow-2xl text-center">
-                <i class="fa-solid fa-unlock-keyhole text-4xl text-blue-500 mb-3"></i>
-                <h2 class="text-xl font-bold text-blue-400 mb-6">هاتف رهف</h2>
+            <div class="glass-panel p-6 border-yellow-600 bg-yellow-950/10 shadow-2xl text-center">
+                <i class="fa-solid fa-unlock-keyhole text-4xl text-yellow-500 mb-3"></i>
+                <h2 class="text-xl font-bold text-yellow-400 mb-6">هاتف رهف</h2>
                 
                 <div class="hint-chat mb-4" style="text-align: right;">
                     <p style="color: white; font-size: 13px;">"مياو! أنا شامم ريحة كذب وخيانة فايحة من الموبايل ده.. البت دي مادية وبتحب الشهرة، شوف التاريخ اللي بتعشقه وافتح الجهاز."</p>
                 </div>
 
                 <div id="rahaf-phone-locked" class="text-center">
-                    <div class="relative w-full mb-4">
-                        <input type="password" inputmode="numeric" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem]" placeholder="****">
-                        <i class="fa-solid fa-eye-slash absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer hover:text-blue-400 transition" onclick="togglePassword('rahaf-phone-pin', this)"></i>
-                    </div>
-                    <button onclick="unlockRahafPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-blue-700">فك الشفرة</button>
+                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4 border-yellow-500 bg-yellow-950/20" placeholder="****">
+                    <button onclick="unlockRahafPhone()" class="w-full bg-yellow-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-yellow-700">فك الشفرة</button>
                 </div>
 
                 <div id="rahaf-error" class="shamshoun-error w-full hidden-screen">
@@ -215,10 +205,9 @@
                             <p class="text-red-400 mt-3">> Sector [05]: [CHECKSUM FAILED]</p>
                         </div>
                         
-                        <div class="relative w-full border-b border-slate-700 pb-2 mb-4 flex items-center">
-                            <span class="text-green-500 text-lg ml-2">></span>
-                            <input type="password" inputmode="numeric" id="camera-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]">
-                            <i class="fa-solid fa-eye-slash absolute left-2 top-1/2 -translate-y-1/2 text-green-700 cursor-pointer hover:text-green-400 transition" onclick="togglePassword('camera-pin', this)"></i>
+                        <div class="flex items-center gap-2 border-b border-slate-700 pb-2 mb-4">
+                            <span class="text-green-500 text-lg">></span>
+                            <input type="number" id="camera-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]">
                         </div>
 
                         <button onclick="unlockCamera()" class="w-full bg-red-900/30 text-red-300 p-3 rounded mt-2 text-xs font-bold border border-red-800">EXECUTE OVERRIDE</button>
@@ -253,10 +242,7 @@
                 </div>
 
                 <div id="phone-locked" class="text-center">
-                    <div class="relative w-full mb-4">
-                        <input type="password" inputmode="numeric" id="phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem]" placeholder="****">
-                        <i class="fa-solid fa-eye-slash absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer hover:text-blue-400 transition" onclick="togglePassword('phone-pin', this)"></i>
-                    </div>
+                    <input type="number" id="phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4" placeholder="****">
                     <button onclick="unlockPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold">فتح الهاتف</button>
                 </div>
 
@@ -286,16 +272,49 @@
 
                 <div id="email-locked" class="bg-black p-5 rounded-xl border-2 border-green-900 shadow-lg">
                     <div class="tech-font">
-                        <p class="text-green-500 text-[11px] mb-2">> Partition Encrypted.</p>
-                        <p class="text-green-400 text-[10px] break-words mb-4 opacity-80 leading-relaxed">
-                            01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01100100 01101111 01110101 01100010 01101100 01100101 00100000 01110011 01100101 01100011 01101111 01101110 01100100 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01111010 01100101 01110010 01101111 00101110 00100000 01010100 01101111 01110100 01100001 01101100 00100000 01101001 01110011 00100000 00110001 00110010 00101110
-                        </p>
-                        <div class="relative w-full border-b border-green-800 pb-2 mb-4 flex items-center">
-                            <span class="text-green-500 text-lg ml-2">root:~#</span>
-                            <input type="password" inputmode="numeric" id="email-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]">
-                            <i class="fa-solid fa-eye-slash absolute left-2 top-1/2 -translate-y-1/2 text-green-700 cursor-pointer hover:text-green-400 transition" onclick="togglePassword('email-pin', this)"></i>
+                        <p class="text-green-500 text-[11px] mb-2">> System Lock: Partition Encrypted.</p>
+                        
+                        <div class="relative bg-green-950/40 p-3 rounded border border-green-800 mb-4">
+                            <p class="text-green-400 text-[10px] mb-3">> Emergency recovery hint found in memory sector 0x4F:</p>
+                            
+                            <div class="text-green-300 text-[10px] opacity-80 leading-relaxed font-mono" style="direction: ltr;">
+                                [0x004F] 01000110 01101001 01110010 01110011<br>
+                                [0x0053] 01110100 00100000 01101001 01110011<br>
+                                [0x0057] 00100000 01110100 01101000 01100101<br>
+                                [0x005B] 00100000 01101111 01101110 01101100<br>
+                                [0x005F] 01111001 00100000 01100101 01110110<br>
+                                [0x0063] 01100101 01101110 00100000 01110000<br>
+                                [0x0067] 01110010 01101001 01101101 01100101<br>
+                                [0x006B] 00101110 00100000 01010011 01100101<br>
+                                [0x006F] 01100011 01101111 01101110 01100100<br>
+                                [0x0073] 00100000 01101001 01110011 00100000<br>
+                                [0x0077] 01101001 01110100 01110011 00100000<br>
+                                [0x007B] 01110011 01110001 01110101 01100001<br>
+                                [0x007F] 01110010 01100101 00101110 00100000<br>
+                                [0x0083] 01010100 01101000 01101001 01110010<br>
+                                [0x0087] 01100100 00100000 01101001 01110011<br>
+                                [0x008B] 00100000 01110100 01101000 01100101<br>
+                                [0x008F] 01101001 01110010 00100000 01110011<br>
+                                [0x0093] 01110101 01101101 00101110 00100000<br>
+                                [0x0097] 01000110 01101111 01110101 01110010<br>
+                                [0x009B] 01110100 01101000 00100000 01101001<br>
+                                [0x009F] 01110011 00100000 01110100 01101000<br>
+                                [0x00A3] 01100101 01101001 01110010 00100000<br>
+                                [0x00A7] 01100100 01101001 01100110 01100110<br>
+                                [0x00AB] 01100101 01110010 01100101 01101110<br>
+                                [0x00AF] 01100011 01100101 00101110 00000000
+                            </div>
+                            
+                            <button onclick="copyBinary()" class="absolute top-2 right-2 bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition flex items-center gap-2 shadow-lg" style="direction: rtl; font-family: 'Tajawal', sans-serif;">
+                                <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-text">نسخ الأرقام</span>
+                            </button>
                         </div>
-                        <button onclick="unlockEmail()" class="w-full bg-green-900/30 text-green-300 p-3 rounded mt-2 text-xs font-bold border border-green-800">DECRYPT</button>
+
+                        <div class="flex items-center gap-2 border-b border-green-800 pb-2 mb-4">
+                            <span class="text-green-500 text-lg ml-2">root:~#</span>
+                            <input type="number" id="email-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]" placeholder="[ _ _ _ _ ]">
+                        </div>
+                        <button onclick="unlockEmail()" class="w-full bg-green-900/30 text-green-300 p-3 rounded mt-2 text-xs font-bold border border-green-800">ENTER DECRYPTION PIN</button>
                     </div>
                 </div>
 
@@ -446,7 +465,7 @@
             `;
         }
 
-        // دالة لإظهار وإخفاء الباسورد
+        // دالة العين مخصصة لشاشة الدخول بس
         function togglePassword(inputId, iconElement) {
             const input = document.getElementById(inputId);
             if (input.type === "password") {
@@ -460,9 +479,21 @@
             }
         }
 
+        // دالة لنسخ الأرقام الثنائية فقط
+        function copyBinary() {
+            const pureBinary = "01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 00100000 01101111 01101110 01101100 01111001 00100000 01100101 01110110 01100101 01101110 00100000 01110000 01110010 01101001 01101101 01100101 00101110 00100000 01010011 01100101 01100011 01101111 01101110 01100100 00100000 01101001 01110011 00100000 01101001 01110100 01110011 00100000 01110011 01110001 01110101 01100001 01110010 01100101 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01100100 01101001 01100110 01100110 01100101 01110010 01100101 01101110 01100011 01100101 00101110 00000000";
+            navigator.clipboard.writeText(pureBinary).then(() => {
+                document.getElementById('copy-text').innerText = "تم النسخ!";
+                document.getElementById('copy-icon').className = "fa-solid fa-check";
+                setTimeout(() => {
+                    document.getElementById('copy-text').innerText = "نسخ الأرقام";
+                    document.getElementById('copy-icon').className = "fa-regular fa-copy";
+                }, 2000);
+            });
+        }
+
         function nav(screenId) {
             document.querySelectorAll('.fade-in').forEach(s => s.classList.add('hidden-screen'));
-            // إخفاء كل رسايل الخطأ لما بنتنقل بين الصفحات
             document.querySelectorAll('.shamshoun-error').forEach(s => s.classList.add('hidden-screen'));
             
             document.getElementById(screenId).classList.remove('hidden-screen');
@@ -514,7 +545,8 @@
         }
 
         function unlockEmail() {
-            if(document.getElementById('email-pin').value === '4260') {
+            // الباسورد الجديد
+            if(document.getElementById('email-pin').value === '2462') {
                 document.getElementById('email-locked').classList.add('hidden-screen');
                 document.getElementById('email-error').classList.add('hidden-screen');
                 document.getElementById('email-unlocked').classList.remove('hidden-screen');
