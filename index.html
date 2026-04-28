@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * { box-sizing: border-box; }
-        body { background-color: #020617; margin: 0; min-height: 100vh; font-family: 'Tajawal', sans-serif; color: #f8fafc; }
+        body { background-color: #020617; margin: 0; min-height: 100vh; font-family: 'Tajawal', sans-serif; color: #f8fafc; overflow-x: hidden; }
         .hidden-screen { display: none !important; }
         
         .bg-tech {
@@ -22,7 +22,7 @@
         .glass-panel { background: rgba(15, 23, 42, 0.9); border: 1px solid #1e293b; backdrop-filter: blur(12px); border-radius: 1.5rem; }
         .tech-font { font-family: 'Share Tech Mono', monospace; direction: ltr; text-align: left; }
         
-        /* فقاعة شمشون */
+        /* فقاعة شمشون العادية */
         .shamshoun-chat {
             background: #0f172a; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
             padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
@@ -38,41 +38,30 @@
         .shamshoun-error {
             background: #3f0f15; border: 1px solid #ef4444; border-radius: 20px 20px 0 20px;
             padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
             animation: shake 0.4s ease-in-out;
         }
         .shamshoun-error::after {
             content: "🐈‍⬛ شمشون (غاضب):"; position: absolute; top: -12px; right: 20px;
             background: #991b1b; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
-            border: 1px solid #ef4444;
         }
 
-        /* فقاعة شمشون للاحتفال بالفوز */
-        .shamshoun-victory {
-            background: #064e3b; border: 2px solid #10b981; border-radius: 20px 20px 0 20px;
-            padding: 20px 25px; position: relative; margin-top: 20px; margin-bottom: 20px; text-align: right;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
-            animation: pulse-green 2s infinite;
+        /* فقاعة شمشون الرئاسية للفوز */
+        .victory-speech {
+            background: linear-gradient(145deg, #064e3b, #065f46); border: 2px solid #10b981; border-radius: 25px 25px 0 25px;
+            padding: 25px; position: relative; margin-top: 20px; margin-bottom: 25px; text-align: right;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            animation: victory-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .shamshoun-victory::after {
-            content: "🏆 القائد الأعلى مياو المياو:"; position: absolute; top: -15px; right: 20px;
-            background: #047857; color: white; font-size: 14px; padding: 4px 15px; border-radius: 8px; font-weight: bold;
-            border: 1px solid #34d399;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        .victory-speech::after {
+            content: "🏆 فخامة المحقق مياو المياو:"; position: absolute; top: -15px; right: 30px;
+            background: #047857; color: white; font-size: 14px; padding: 5px 15px; border-radius: 8px; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        /* فقاعة فسفوس */
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } }
+        @keyframes victory-pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes glow-green { from { box-shadow: 0 0 5px #10b981; } to { box-shadow: 0 0 20px #10b981; } }
+
         .fasfous-chat {
             background: #1e293b; border: 1px solid #94a3b8; border-radius: 20px 20px 20px 0;
             padding: 15px 25px; position: relative; margin-bottom: 15px; text-align: right;
@@ -80,16 +69,6 @@
         .fasfous-chat::after {
             content: "🐈 فسفوس:"; position: absolute; top: -12px; left: 20px;
             background: #475569; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
-            border: 1px solid #94a3b8;
-        }
-
-        .hint-chat {
-            background: #1e293b; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
-            padding: 15px 25px; position: relative; margin-bottom: 15px; text-align: right;
-        }
-        .hint-chat::after {
-            content: "🐈‍⬛ شمشون:"; position: absolute; top: -12px; right: 20px;
-            background: #1e3a8a; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
         }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
@@ -100,9 +79,12 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         .input-field { background: #0f172a; border: 1px solid #334155; color: white; text-align: center; }
-        .input-field:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+        .input-field:focus { border-color: #3b82f6; outline: none; }
 
         .system-locked-bg { background-color: #450a0a !important; background-image: none !important; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        
+        /* تأثيرات الفوز */
+        .victory-mode { border: 2px solid #10b981 !important; background: rgba(6, 78, 59, 0.4) !important; animation: glow-green 1.5s infinite alternate; }
     </style>
 </head>
 <body class="antialiased bg-tech" id="main-body">
@@ -117,23 +99,16 @@
                 <h1 class="text-2xl font-bold text-white mb-2">وزارة الداخلية</h1>
                 <p class="text-slate-400 text-sm mb-8">نظام تتبع الأدلة الجنائية</p>
                 <div class="space-y-4">
-                    <input type="email" id="login-email" class="input-field w-full p-4 rounded-xl" value="admin@police.com" placeholder="البريد الإلكتروني" readonly>
-                    
+                    <input type="email" id="login-email" class="input-field w-full p-4 rounded-xl" value="admin@police.com" readonly>
                     <div class="relative w-full">
                         <input type="password" id="login-pass" class="input-field w-full p-4 rounded-xl" placeholder="كلمة المرور">
-                        <i class="fa-solid fa-eye-slash absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer hover:text-blue-400 transition" onclick="togglePassword('login-pass', this)"></i>
+                        <i class="fa-solid fa-eye-slash absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer" onclick="togglePassword('login-pass', this)"></i>
                     </div>
-
                     <button onclick="handleLogin()" class="w-full bg-blue-600 hover:bg-blue-500 p-4 rounded-xl font-bold shadow-lg mt-4">تسجيل الدخول</button>
                 </div>
             </div>
-            
-            <div class="hint-chat w-full shadow-xl" style="margin-top: 30px;">
-                <p style="color: white; font-size: 14px;">"مياو المياو باشا! اكتب الباسورد (meow) بسرعة عشان علبة التونة بتاعتي مستنية ورا المكتب."</p>
-            </div>
-
-            <div id="login-error" class="shamshoun-error w-full hidden-screen">
-                <p style="color: white; font-size: 13px;">"مياو! الباسورد غلط يا باشا.. ركز شوية وجرب تاني أحسن التونة هتبرد وأنا جعت!"</p>
+            <div id="login-error" class="shamshoun-error w-full hidden-screen mt-6">
+                <p style="color: white; font-size: 13px;">"مياو! الباسورد غلط يا باشا.. ركز شوية وجرب تاني أحسن التونة هتبرد!"</p>
             </div>
         </div>
 
@@ -155,8 +130,8 @@
                 <button onclick="nav('screen-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-mobile-screen text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف سامح</span>
                 </button>
-                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 border-yellow-700/50 bg-yellow-950/20 hover:border-yellow-500 transition">
-                    <i class="fa-solid fa-mobile-button text-3xl text-yellow-500"></i><span class="text-xs font-bold text-yellow-300">هاتف رهف</span>
+                <button onclick="nav('screen-rahaf-phone')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
+                    <i class="fa-solid fa-mobile-button text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">هاتف رهف</span>
                 </button>
                 <button onclick="nav('screen-camera')" class="glass-panel p-5 flex flex-col items-center justify-center gap-3 hover:border-blue-500 transition">
                     <i class="fa-solid fa-camera text-3xl text-slate-300"></i><span class="text-xs font-bold text-slate-300">الكاميرا</span>
@@ -176,25 +151,16 @@
 
         <div id="screen-rahaf-phone" class="hidden-screen fade-in">
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 border-yellow-600 bg-yellow-950/10 shadow-2xl text-center">
-                <i class="fa-solid fa-unlock-keyhole text-4xl text-yellow-500 mb-3"></i>
-                <h2 class="text-xl font-bold text-yellow-400 mb-6">هاتف رهف</h2>
-                
-                <div class="hint-chat mb-4" style="text-align: right;">
-                    <p style="color: white; font-size: 13px;">"مياو! أنا شامم ريحة كذب وخيانة فايحة من الموبايل ده.. البت دي مادية وبتحب الشهرة، شوف التاريخ اللي بتعشقه وافتح الجهاز."</p>
-                </div>
-
+            <div class="glass-panel p-6 border-blue-600 bg-slate-900/50 shadow-2xl text-center">
+                <i class="fa-solid fa-unlock-keyhole text-4xl text-blue-500 mb-3"></i>
+                <h2 class="text-xl font-bold text-blue-400 mb-6">هاتف رهف</h2>
                 <div id="rahaf-phone-locked" class="text-center">
-                    <div class="relative w-full mb-4">
-                        <input type="password" inputmode="numeric" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] border-yellow-500 bg-yellow-950/20" placeholder="****">
-                    </div>
-                    <button onclick="unlockRahafPhone()" class="w-full bg-yellow-600 p-4 rounded-xl font-bold text-white shadow-xl hover:bg-yellow-700">فك الشفرة</button>
+                    <input type="number" id="rahaf-phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4" placeholder="****">
+                    <button onclick="unlockRahafPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold text-white">فك الشفرة</button>
                 </div>
-
-                <div id="rahaf-error" class="shamshoun-error w-full hidden-screen">
-                    <p style="color: white; font-size: 13px;">"غلط يا ريس! مش ده الباسورد.. افتكر التواريخ المهمة وجرب تاني مياااو."</p>
+                <div id="rahaf-error" class="shamshoun-error w-full hidden-screen mt-4">
+                    <p style="color: white; font-size: 13px;">"غلط يا ريس! مش ده الباسورد.. افتكر التاريخ اللي هي بتعشقه وجرب تاني."</p>
                 </div>
-
                 <div id="rahaf-phone-unlocked" class="hidden-screen mt-4">
                     <div class="p-3 bg-green-500/10 border border-green-500/30 rounded-xl text-center mb-2"><span class="text-green-500 text-xs font-bold">✅ تم الاسترجاع بنجاح</span></div>
                     <div class="gallery-grid">
@@ -205,145 +171,35 @@
             </div>
         </div>
 
-        <div id="screen-camera" class="hidden-screen fade-in flex flex-col h-full">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 flex-1 overflow-y-auto">
-                <h2 class="text-xl font-bold text-red-500 mb-4 text-center tracking-widest tech-font">SD_RECOVERY</h2>
-                
-                <div class="hint-chat mb-4">
-                    <p style="color: white; font-size: 13px;">"الشاشة دي بتوجع عيني.. الأرقام عمالة تنط، شوفلها صرفة أنا هروح أعمل قيلولة تحت الكرسي."</p>
-                </div>
-
-                <div id="camera-locked" class="bg-black p-5 rounded-xl border-2 border-red-900 shadow-lg">
-                    <div class="tech-font">
-                        <p class="text-red-500 text-[11px] mb-2 animate-pulse">FATAL ERROR: SECTORS_CORRUPTED</p>
-                        <div class="text-slate-300 text-[11px] space-y-2 mb-6">
-                            <p>> Sector [00]: 04 KB</p>
-                            <p>> Sector [01]: 09 KB</p>
-                            <p>> Sector [02]: 15 KB</p>
-                            <p>> Sector [03]: 26 KB</p>
-                            <p>> Sector [04]: 43 KB</p>
-                            <p class="text-red-400 mt-3">> Sector [05]: [CHECKSUM FAILED]</p>
-                        </div>
-                        
-                        <div class="flex items-center gap-2 border-b border-slate-700 pb-2 mb-4">
-                            <span class="text-green-500 text-lg">></span>
-                            <input type="number" id="camera-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]">
-                        </div>
-
-                        <button onclick="unlockCamera()" class="w-full bg-red-900/30 text-red-300 p-3 rounded mt-2 text-xs font-bold border border-red-800">EXECUTE OVERRIDE</button>
-                    </div>
-                </div>
-
-                <div id="camera-error" class="shamshoun-error w-full hidden-screen">
-                    <p style="color: white; font-size: 13px;">"مياو! الأرقام دي مش راكبة على بعض.. ركز واكتب الشفرة الصح."</p>
-                </div>
-
-                <div id="camera-unlocked" class="hidden-screen mt-4">
-                    <div class="p-3 bg-green-500/10 border border-green-500/30 rounded-xl text-center mb-2"><span class="text-green-500 text-xs font-bold">✅ تم الاسترجاع بنجاح</span></div>
-                    <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/mVwk9z7b/Picsart-26-04-25-16-04-59-157.png')">
-                            <img src="https://i.ibb.co/mVwk9z7b/Picsart-26-04-25-16-04-59-157.png">
-                        </div>
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/20zwxKc4/Picsart-26-04-25-16-07-36-895.png')">
-                            <img src="https://i.ibb.co/20zwxKc4/Picsart-26-04-25-16-07-36-895.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="screen-phone" class="hidden-screen fade-in">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6">
-                <h2 class="text-xl font-bold text-blue-400 mb-4 text-center">هاتف سامح</h2>
-                
-                <div class="hint-chat mb-4">
-                    <p style="color: white; font-size: 13px;">"البشر دول معقدين أوي! إحنا القطط بناكل وننام، افتح البتاع ده خلينا نخلص."</p>
-                </div>
-
-                <div id="phone-locked" class="text-center">
-                    <input type="number" id="phone-pin" class="input-field w-full p-4 rounded-xl text-2xl tracking-[0.5rem] mb-4" placeholder="****">
-                    <button onclick="unlockPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold">فتح الهاتف</button>
-                </div>
-
-                <div id="phone-error" class="shamshoun-error w-full hidden-screen">
-                    <p style="color: white; font-size: 13px;">"لا لا مش ده الرقم يا باشا! جرب تاني خلينا نخلص من وجع الدماغ ده."</p>
-                </div>
-
-                <div id="phone-unlocked" class="hidden-screen mt-4">
-                    <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/NgWLfC72/Picsart-26-04-28-14-50-02-177.jpg')"><img src="https://i.ibb.co/NgWLfC72/Picsart-26-04-28-14-50-02-177.jpg"></div>
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/xSp1cCH8/Picsart-26-04-28-14-50-35-866.jpg')"><img src="https://i.ibb.co/xSp1cCH8/Picsart-26-04-28-14-50-35-866.jpg"></div>
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/CKZVC42W/Picsart-26-04-28-14-51-10-664.png')"><img src="https://i.ibb.co/CKZVC42W/Picsart-26-04-28-14-51-10-664.png"></div>
-                        <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/whQWQKvk/Picsart-26-04-28-14-52-26-892.png')"><img src="https://i.ibb.co/whQWQKvk/Picsart-26-04-28-14-52-26-892.png"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div id="screen-email" class="hidden-screen fade-in flex flex-col h-full">
             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
             <div class="glass-panel p-6 flex-1 overflow-y-auto">
                 <h2 class="text-xl font-bold text-green-500 mb-4 text-center tracking-widest tech-font">DECRYPTION</h2>
-                
-                <div class="hint-chat mb-4">
-                    <p style="color: white; font-size: 13px;">"الشاشة الخضرا دي مرعبة بجد! حاسس إن في كلب روت وايلر هيطلع منها.. فك الشفرة أنا جسمي قشعر."</p>
-                </div>
-
                 <div id="email-locked" class="bg-black p-5 rounded-xl border-2 border-green-900 shadow-lg">
                     <div class="tech-font">
-                        <p class="text-green-500 text-[11px] mb-2">> System Lock: Partition Encrypted.</p>
-                        
-                        <div class="bg-green-950/40 rounded border border-green-800 mb-4 overflow-hidden">
-                            <div class="bg-green-900/50 px-3 py-2 flex justify-between items-center border-b border-green-800">
-                                <span class="text-green-400 text-[10px]">> Emergency hint:</span>
-                                <button onclick="copyBinary()" class="bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition flex items-center gap-2 shadow-lg" style="font-family: 'Share Tech Mono', monospace; direction: ltr;">
-                                    <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-text">COPY BINARY</span>
-                                </button>
-                            </div>
-                            
-                            <div class="p-3 text-green-300 text-[10px] opacity-80 leading-relaxed font-mono" style="direction: ltr;">
-                                [0x004F] 01000110 01101001 01110010 01110011<br>
-                                [0x0053] 01110100 00100000 01101001 01110011<br>
-                                [0x0057] 00100000 01110100 01101000 01100101<br>
-                                [0x005B] 00100000 01101111 01101110 01101100<br>
-                                [0x005F] 01111001 00100000 01100101 01110110<br>
-                                [0x0063] 01100101 01101110 00100000 01110000<br>
-                                [0x0067] 01110010 01101001 01101101 01100101<br>
-                                [0x006B] 00101110 00100000 01010011 01100101<br>
-                                [0x006F] 01100011 01101111 01101110 01100100<br>
-                                [0x0073] 00100000 01101001 01110011 00100000<br>
-                                [0x0077] 01101001 01110100 01110011 00100000<br>
-                                [0x007B] 01110011 01110001 01110101 01100001<br>
-                                [0x007F] 01110010 01100101 00101110 00100000<br>
-                                [0x0083] 01010100 01101000 01101001 01110010<br>
-                                [0x0087] 01100100 00100000 01101001 01110011<br>
-                                [0x008B] 00100000 01110100 01101000 01100101<br>
-                                [0x008F] 01101001 01110010 00100000 01110011<br>
-                                [0x0093] 01110101 01101101 00101110 00100000<br>
-                                [0x0097] 01000110 01101111 01110101 01110010<br>
-                                [0x009B] 01110100 01101000 00100000 01101001<br>
-                                [0x009F] 01110011 00100000 01110100 01101000<br>
-                                [0x00A3] 01100101 01101001 01110010 00100000<br>
-                                [0x00A7] 01100100 01101001 01100110 01100110<br>
-                                [0x00AB] 01100101 01110010 01100101 01101110<br>
-                                [0x00AF] 01100011 01100101 00101110 00000000
-                            </div>
+                        <div class="bg-green-900/50 px-3 py-2 flex justify-between items-center border-b border-green-800">
+                            <span class="text-green-400 text-[10px]">> Memory Dump:</span>
+                            <button onclick="copyBinary()" class="bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded text-[10px] transition flex items-center gap-2">
+                                <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-text">COPY BINARY</span>
+                            </button>
                         </div>
-
+                        <div class="p-3 text-green-300 text-[9px] opacity-80 leading-relaxed font-mono" style="direction: ltr;">
+                            [0x004F] 01000110 01101001 01110010 01110011<br>
+                            [0x0053] 01110100 00100000 01101001 01110011<br>
+                            [0x0057] 00100000 01110100 01101000 01100101<br>
+                            [0x005B] 00100000 01101111 01101110 01101100<br>
+                            [0x00AF] 01100011 01100101 00101110 00000000
+                        </div>
                         <div class="flex items-center gap-2 border-b border-green-800 pb-2 mb-4">
                             <span class="text-green-500 text-lg ml-2">root:~#</span>
-                            <input type="number" id="email-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]" placeholder="[ _ _ _ _ ]">
+                            <input type="number" id="email-pin" class="bg-transparent border-none text-green-500 text-xl w-full focus:outline-none tracking-[0.5rem]" placeholder="****">
                         </div>
-                        <button onclick="unlockEmail()" class="w-full bg-green-900/30 text-green-300 p-3 rounded mt-2 text-xs font-bold border border-green-800">ENTER DECRYPTION PIN</button>
+                        <button onclick="unlockEmail()" class="w-full bg-green-900/30 text-green-300 p-3 rounded text-xs font-bold border border-green-800">ENTER PIN</button>
                     </div>
                 </div>
-
-                <div id="email-error" class="shamshoun-error w-full hidden-screen">
-                    <p style="color: white; font-size: 13px;">"الكلب هيهوهو علينا بسببك! الشفرة دي غلط، فكر فيها تاني."</p>
+                <div id="email-error" class="shamshoun-error w-full hidden-screen mt-4">
+                    <p style="color: white; font-size: 13px;">"مياو! الأرقام دي غلط.. ركز في الشفرة الثنائية قبل ما اللاب يفرقع!"</p>
                 </div>
-
                 <div id="email-unlocked" class="hidden-screen mt-4">
                     <div class="gallery-grid">
                         <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/dJLy6mkY/email-1.png')"><img src="https://i.ibb.co/dJLy6mkY/email-1.png"></div>
@@ -353,254 +209,165 @@
             </div>
         </div>
 
-        <div id="screen-traffic" class="hidden-screen fade-in">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div class="glass-panel p-6 text-center border-t-4 border-slate-600">
-                <h2 class="text-2xl font-bold text-slate-400 mb-4">قاعدة بيانات المرور</h2>
-                
-                <div class="hint-chat mb-6">
-                    <p style="color: white; font-size: 13px;">"عربيات ومرور ولوحات معدنية.. أنا مابحبش العربيات دي من ساعة ما ديلى اتزنق في باب ميكروباص."</p>
-                </div>
-
-                <div id="traffic-search">
-                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 mb-6">
-                        <p class="text-[10px] text-slate-400 text-right mb-2">اللوحة المعدنية (حروف - أرقام):</p>
-                        <div class="flex justify-center items-center gap-2">
-                            <input type="number" id="traffic-numbers" class="input-field w-1/2 p-3 rounded-lg text-xl tracking-widest bg-black" placeholder="أرقام">
-                            <span class="text-white">-</span>
-                            <input type="text" id="traffic-letters" class="input-field w-1/2 p-3 rounded-lg text-xl tracking-widest bg-black text-center" placeholder="حروف">
-                        </div>
-                    </div>
-                    <button onclick="searchTraffic()" class="w-full bg-slate-700 p-4 rounded-xl font-bold">استعلام أمني</button>
-                </div>
-
-                <div id="traffic-error" class="shamshoun-error w-full hidden-screen">
-                    <p style="color: white; font-size: 13px;">"الرقم مش على السيستم! راجع اللوحة المعدنية تاني أحسن المرور يكلبشونا."</p>
-                </div>
-
-                <div id="traffic-result" class="hidden-screen mt-6">
-                    <div class="bg-slate-800 rounded-xl overflow-hidden shadow-2xl border border-slate-600 text-right">
-                        <div class="bg-slate-900/50 p-3 border-b border-slate-600 flex justify-between">
-                            <span class="font-bold text-slate-300">ملف المركبة المروري</span>
-                        </div>
-                        <div class="p-4 space-y-3 text-sm">
-                            <div class="flex justify-between border-b border-slate-700 pb-2">
-                                <span class="text-xs text-slate-400">المالك المسجل:</span>
-                                <span class="text-sm font-bold text-white">طارق رضوان</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-700 pb-2">
-                                <span class="text-xs text-slate-400">اللوحة:</span>
-                                <span class="text-sm font-bold text-slate-400">ط ج م - 7198</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-700 pb-2">
-                                <span class="text-xs text-slate-400">الماركة:</span>
-                                <span class="text-sm font-bold text-white">كيا سيراتو (2010)</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-700 pb-2">
-                                <span class="text-xs text-slate-400">اللون:</span>
-                                <span class="text-sm font-bold text-white">أزرق داكن</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div id="screen-final" class="hidden-screen fade-in h-full flex flex-col justify-center">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
-            <div id="final-container" class="glass-panel p-6 text-center border-t-4 border-red-600 bg-red-950/20">
-                <h2 class="text-2xl font-bold text-red-500 mb-2">CASE CLOSURE</h2>
-                
-                <div class="hint-chat mb-4" style="text-align: center;">
-                    <p style="color: white; font-size: 13px;">"دي اللحظة الحاسمة يا مياو باشا! اكتب اسم القاتل الحقيقي، ركز أرجوك عشان لو غلطت السيستم هيقفل وهنطرد إحنا الاتنين في الشارع!"</p>
-                </div>
-
-                <div class="bg-red-900/40 border border-red-600 p-3 rounded mb-6 text-left">
-                    <p class="text-red-400 font-bold tech-font text-xs uppercase animate-pulse">! WARNING: ONE ATTEMPT ONLY !</p>
-                    <p class="text-red-200 tech-font text-[10px] mt-1">An incorrect code will trigger a permanent system lockdown.</p>
-                </div>
-                
+            <button onclick="nav('screen-dashboard')" id="back-btn-final" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
+            <div id="final-container" class="glass-panel p-6 text-center border-t-4 border-red-600 bg-red-950/10">
+                <h2 class="text-2xl font-bold text-red-500 mb-2">إغلاق ملف القضية</h2>
                 <div id="final-locked">
-                    <p class="text-slate-300 text-xs mb-3 font-bold">* تلميح: اكتب الاسم الأول للقاتل فقط (بالعربية).</p>
+                    <p class="text-slate-300 text-xs mb-4">اكتب الاسم الأول للقاتل الحقيقي لإنهاء التحقيق:</p>
                     <input type="text" id="final-name" class="input-field w-full p-4 rounded-xl mb-4 text-white font-bold" placeholder="الاسم الأول...">
-                    <button onclick="solveCase()" class="w-full bg-red-600 hover:bg-red-700 transition p-4 rounded-xl font-bold shadow-xl text-white">تأكيد إغلاق القضية</button>
+                    <button onclick="solveCase()" class="w-full bg-red-600 hover:bg-red-700 transition p-4 rounded-xl font-bold text-white shadow-xl">تأكيد الجاني</button>
                 </div>
+                <div id="final-result-area" class="hidden-screen">
+                    </div>
             </div>
         </div>
 
+        <div id="screen-phone" class="hidden-screen fade-in">
+             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+             <div class="glass-panel p-6 text-center"><h2 class="text-xl font-bold text-blue-400 mb-4">هاتف سامح</h2>
+             <input type="number" id="phone-pin" class="input-field w-full p-4 rounded-xl mb-4" placeholder="****">
+             <button onclick="unlockPhone()" class="w-full bg-blue-600 p-4 rounded-xl font-bold">فتح</button>
+             <div id="phone-error" class="shamshoun-error hidden-screen mt-4"><p style="color:white; font-size:12px;">"رقم غلط! مياو."</p></div>
+             <div id="phone-unlocked" class="hidden-screen mt-4"><div class="gallery-grid">
+                <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/NgWLfC72/Picsart-26-04-28-14-50-02-177.jpg')"><img src="https://i.ibb.co/NgWLfC72/Picsart-26-04-28-14-50-02-177.jpg"></div>
+             </div></div></div>
+        </div>
+
+        <div id="screen-camera" class="hidden-screen fade-in">
+             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+             <div class="glass-panel p-6 text-center"><h2 class="text-xl font-bold text-red-500 mb-4">الكاميرا</h2>
+             <input type="number" id="camera-pin" class="input-field w-full p-4 rounded-xl mb-4" placeholder="**">
+             <button onclick="unlockCamera()" class="w-full bg-red-600 p-4 rounded-xl font-bold">استعادة</button>
+             <div id="camera-error" class="shamshoun-error hidden-screen mt-4"><p style="color:white; font-size:12px;">"شفرة غلط! مياو."</p></div>
+             <div id="camera-unlocked" class="hidden-screen mt-4"><div class="gallery-grid">
+                <div class="gallery-item" onclick="openImageViewer('https://i.ibb.co/mVwk9z7b/Picsart-26-04-25-16-04-59-157.png')"><img src="https://i.ibb.co/mVwk9z7b/Picsart-26-04-25-16-04-59-157.png"></div>
+             </div></div></div>
+        </div>
+
+        <div id="screen-traffic" class="hidden-screen fade-in">
+             <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+             <div class="glass-panel p-6 text-center"><h2 class="text-xl font-bold text-slate-400 mb-4">المرور</h2>
+             <div class="flex gap-2 mb-4"><input type="number" id="traffic-numbers" class="input-field w-1/2 p-4 rounded-xl" placeholder="أرقام"><input type="text" id="traffic-letters" class="input-field w-1/2 p-4 rounded-xl" placeholder="حروف"></div>
+             <button onclick="searchTraffic()" class="w-full bg-slate-600 p-4 rounded-xl font-bold">بحث</button>
+             <div id="traffic-error" class="shamshoun-error hidden-screen mt-4"><p style="color:white; font-size:12px;">"مفيش عربية كدة! مياو."</p></div>
+             <div id="traffic-result" class="hidden-screen mt-4 bg-slate-800 p-4 rounded-xl text-right">
+                <p class="text-sm">المالك: طارق رضوان</p>
+                <p class="text-sm">اللون: أزرق داكن</p>
+             </div></div>
+        </div>
+
+    </div>
+
+    <div id="image-viewer-modal" class="hidden-screen fixed inset-0 z-50 bg-black flex flex-col">
+        <div class="p-4 flex justify-end"><button onclick="closeImageViewer()" class="text-white text-3xl">&times;</button></div>
+        <div class="flex-1 flex items-center justify-center p-2"><img id="viewer-img" src="" class="max-w-full max-h-[85vh] object-contain"></div>
     </div>
 
     <div id="system-locked-screen" class="hidden-screen fixed inset-0 z-50 flex flex-col justify-center items-center text-center">
         <i class="fa-solid fa-lock text-6xl text-red-600 mb-6"></i>
         <h1 class="text-5xl font-bold text-red-600 mb-4 tech-font tracking-widest">SYSTEM LOCKED</h1>
-        <p class="text-red-400 tech-font mb-2">UNAUTHORIZED ACCESS DETECTED</p>
-    </div>
-
-    <div id="image-viewer-modal" class="hidden-screen fixed inset-0 z-50 bg-black flex flex-col">
-        <div class="p-4 flex justify-end">
-            <button onclick="closeImageViewer()" class="text-white text-3xl font-bold">&times;</button>
-        </div>
-        <div class="flex-1 flex items-center justify-center p-2 overflow-auto">
-            <img id="viewer-img" src="" style="max-width: 100vw; max-height: 85vh; object-fit: contain;">
-        </div>
     </div>
 
     <script>
-        const catChats = [
-            {
-                shamshoun: "مياو المياو باشا إنت لسه هنا؟ الجو حر أوي ومحتاج أمدد على السيراميك.",
-                fasfous: "يا عم ركز معاه خليه يخلص، أنا شامم ريحة دراي فود بالفراخ جاية من الشقة اللي جنبنا.",
-                shamshoun2: "دراي فود إيه؟ إحنا مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
-                fasfous2: "طب نام إنت وأنا هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك علطول."
-            },
-            {
-                shamshoun: "الدم اللي في القضية دي كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح اللي وقعت في المطبخ.",
-                fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها.",
-                shamshoun2: "إنت قط فرفور أصلاً، المباحث دي محتاجة قطط شوارع ناشفة زيي بتنام على كبابيت العربيات.",
-                fasfous2: "يا عم الناشف إنت امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب وتجري."
-            },
-            {
-                shamshoun: "يا فسفوس ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف من الصبح!",
-                fasfous: "يا عم سيبني الدبانة دي المشتبه به رقم واحد بالنسبالي شكلها مريب ومحتاجة انقضاض.",
-                shamshoun2: "دي دبانة يا متخلف ركز في صور الكاميرا والموبايلات دي يمكن نلاقي دليل نخلص بيه من الشغلانة دي.",
-                fasfous2: "دليل إيه إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية وكلنا بالهنا والشفا."
-            }
-        ];
-
-        function loadRandomChat() {
-            const chatBox = document.getElementById('random-cat-chat');
-            const randomIdx = Math.floor(Math.random() * catChats.length);
-            const chat = catChats[randomIdx];
-            chatBox.innerHTML = `
-                <div class="shamshoun-chat shadow-lg fade-in">
-                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.shamshoun}"</p>
-                </div>
-                <div class="fasfous-chat shadow-lg fade-in">
-                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.fasfous}"</p>
-                </div>
-                <div class="shamshoun-chat shadow-lg fade-in">
-                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.shamshoun2}"</p>
-                </div>
-                <div class="fasfous-chat shadow-lg fade-in">
-                    <p style="color: white; font-size: 13px; line-height: 1.6;">"${chat.fasfous2}"</p>
-                </div>
-            `;
-        }
-
-        // دالة العين مخصصة لشاشة الدخول بس
-        function togglePassword(inputId, iconElement) {
-            const input = document.getElementById(inputId);
-            if (input.type === "password") {
-                input.type = "text";
-                iconElement.classList.remove("fa-eye-slash");
-                iconElement.classList.add("fa-eye");
-            } else {
-                input.type = "password";
-                iconElement.classList.remove("fa-eye");
-                iconElement.classList.add("fa-eye-slash");
-            }
-        }
-
-        function copyBinary() {
-            const pureBinary = "01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 00100000 01101111 01101110 01101100 01111001 00100000 01100101 01110110 01100101 01101110 00100000 01110000 01110010 01101001 01101101 01100101 00101110 00100000 01010011 01100101 01100011 01101111 01101110 01100100 00100000 01101001 01110011 00100000 01101001 01110100 01110011 00100000 01110011 01110001 01110101 01100001 01110010 01100101 00101110 00100000 01010100 01101000 01101001 01110010 01100100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110011 01110101 01101101 00101110 00100000 01000110 01101111 01110101 01110010 01110100 01101000 00100000 01101001 01110011 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01100100 01101001 01100110 01100110 01100101 01110010 01100101 01101110 01100011 01100101 00101110 00000000";
-            navigator.clipboard.writeText(pureBinary).then(() => {
-                document.getElementById('copy-text').innerText = "COPIED!";
-                document.getElementById('copy-icon').className = "fa-solid fa-check";
-                setTimeout(() => {
-                    document.getElementById('copy-text').innerText = "COPY BINARY";
-                    document.getElementById('copy-icon').className = "fa-regular fa-copy";
-                }, 2000);
-            });
-        }
-
+        // لوجيك التنقل
         function nav(screenId) {
             document.querySelectorAll('.fade-in').forEach(s => s.classList.add('hidden-screen'));
             document.querySelectorAll('.shamshoun-error').forEach(s => s.classList.add('hidden-screen'));
-            
             document.getElementById(screenId).classList.remove('hidden-screen');
             window.scrollTo(0,0);
-            
-            if (screenId === 'screen-dashboard') {
-                loadRandomChat();
-            }
+            if (screenId === 'screen-dashboard') loadRandomChat();
         }
 
-        function handleLogin() {
-            const pass = document.getElementById('login-pass').value.trim().toLowerCase();
-            if(pass === 'meow') {
-                nav('screen-dashboard'); 
-            }
-            else {
-                document.getElementById('login-error').classList.remove('hidden-screen');
-            }
+        // إظهار الباسورد (لشاشة الدخول بس)
+        function togglePassword(id, el) {
+            const input = document.getElementById(id);
+            if (input.type === "password") { input.type = "text"; el.className = "fa-solid fa-eye"; }
+            else { input.type = "password"; el.className = "fa-solid fa-eye-slash"; }
         }
 
+        // شمشون الخطير
+        function loadRandomChat() {
+            const chatBox = document.getElementById('random-cat-chat');
+            const chats = [
+                { s: "مياو المياو باشا إنت لسه هنا؟ الجو حر ومحتاج أمدد على السيراميك.", f: "يا عم ركز خلينا نخلص، أنا شامم ريحة دراي فود بالفراخ!" }
+            ];
+            const c = chats[0];
+            chatBox.innerHTML = `<div class="shamshoun-chat shadow-lg fade-in"><p style="color:white; font-size:13px;">"${c.s}"</p></div><div class="fasfous-chat shadow-lg fade-in"><p style="color:white; font-size:13px;">"${c.f}"</p></div>`;
+        }
+
+        // فك الشفرات
+        function handleLogin() { 
+            if(document.getElementById('login-pass').value.toLowerCase() === 'meow') nav('screen-dashboard'); 
+            else document.getElementById('login-error').classList.remove('hidden-screen');
+        }
         function unlockRahafPhone() {
             if(document.getElementById('rahaf-phone-pin').value === '0701') {
                 document.getElementById('rahaf-phone-locked').classList.add('hidden-screen');
-                document.getElementById('rahaf-error').classList.add('hidden-screen');
                 document.getElementById('rahaf-phone-unlocked').classList.remove('hidden-screen');
-            } else {
-                document.getElementById('rahaf-error').classList.remove('hidden-screen');
-            }
+            } else document.getElementById('rahaf-error').classList.remove('hidden-screen');
         }
-
-        function unlockCamera() {
-            if(document.getElementById('camera-pin').value === '71') {
-                document.getElementById('camera-locked').classList.add('hidden-screen');
-                document.getElementById('camera-error').classList.add('hidden-screen');
-                document.getElementById('camera-unlocked').classList.remove('hidden-screen');
-            } else {
-                document.getElementById('camera-error').classList.remove('hidden-screen');
-            }
-        }
-
-        function unlockPhone() {
-            if(document.getElementById('phone-pin').value === '2311') {
-                document.getElementById('phone-locked').classList.add('hidden-screen');
-                document.getElementById('phone-error').classList.add('hidden-screen');
-                document.getElementById('phone-unlocked').classList.remove('hidden-screen');
-            } else {
-                document.getElementById('phone-error').classList.remove('hidden-screen');
-            }
-        }
-
         function unlockEmail() {
             if(document.getElementById('email-pin').value === '2462') {
                 document.getElementById('email-locked').classList.add('hidden-screen');
-                document.getElementById('email-error').classList.add('hidden-screen');
                 document.getElementById('email-unlocked').classList.remove('hidden-screen');
-            } else {
-                document.getElementById('email-error').classList.remove('hidden-screen');
-            }
+            } else document.getElementById('email-error').classList.remove('hidden-screen');
         }
-
+        function unlockPhone() {
+            if(document.getElementById('phone-pin').value === '2311') {
+                document.getElementById('phone-locked').classList.add('hidden-screen');
+                document.getElementById('phone-unlocked').classList.remove('hidden-screen');
+            } else document.getElementById('phone-error').classList.remove('hidden-screen');
+        }
+        function unlockCamera() {
+            if(document.getElementById('camera-pin').value === '71') {
+                document.getElementById('camera-locked').classList.add('hidden-screen');
+                document.getElementById('camera-unlocked').classList.remove('hidden-screen');
+            } else document.getElementById('camera-error').classList.remove('hidden-screen');
+        }
         function searchTraffic() {
-            const letters = document.getElementById('traffic-letters').value.trim();
-            const numbers = document.getElementById('traffic-numbers').value.trim();
-            const cleanLetters = letters.replace(/\s+/g, ''); 
-            
-            if(cleanLetters.includes('ط') && cleanLetters.includes('ج') && cleanLetters.includes('م') && numbers === '7198') {
-                document.getElementById('traffic-error').classList.add('hidden-screen');
-                document.getElementById('traffic-search').classList.add('hidden-screen');
+            const l = document.getElementById('traffic-letters').value;
+            const n = document.getElementById('traffic-numbers').value;
+            if(l.includes('ط') && l.includes('ج') && l.includes('م') && n === '7198') {
                 document.getElementById('traffic-result').classList.remove('hidden-screen');
-            } else {
-                document.getElementById('traffic-error').classList.remove('hidden-screen');
-            }
+            } else document.getElementById('traffic-error').classList.remove('hidden-screen');
         }
 
+        // وظيفة النسخ
+        function copyBinary() {
+            const b = "01000110 01101001 01110010 01110011 01110100 00100000 01101001 01110011 00100000 01110100 01101000 01100101 00100000 01101111 01101110 01101100 01111001 00100000 01100101 01110110 01100101 01101110 00100000 01110000 01110010 01101001 01101101 01100101 00101110";
+            navigator.clipboard.writeText(b).then(() => {
+                document.getElementById('copy-text').innerText = "COPIED!";
+                setTimeout(() => document.getElementById('copy-text').innerText = "COPY BINARY", 2000);
+            });
+        }
+
+        // الحل النهائي واحتفال شمشون الرئاسي
         function solveCase() {
-            const ans = document.getElementById('final-name').value.trim();
-            if(ans.includes('طارق')) {
-                document.getElementById('final-container').innerHTML = `
-                    <div class="shamshoun-victory fade-in mb-6">
-                        <p style="color: white; font-size: 15px; line-height: 1.8;">"بسم الله الرحمن الرحيم، أيها الشعب العظيم، أيها المحققون الأبطال! بصفتي القائد الأعلى مياو المياو، أعلن رسمياً إغلاق القضية بنجاح مبهر! لقد أثبتم أنكم أذكى من ثعلب ماكر، وأسرع من كلب بلدي يجري ورا موتوسيكل.. أنا فخور بكم! والآن، استلموا الجايزة الكبرى وافتحوا الخزنة، وأنا هروح أفتح علبة تونة احتفالاً بالنصر العظيم.. تحيا المباحث! مياااااااو! 🐾🫡"</p>
+            const name = document.getElementById('final-name').value.trim();
+            if(name.includes('طارق')) {
+                // تفعيل وضع الفوز
+                const container = document.getElementById('final-container');
+                container.classList.remove('border-red-600');
+                container.classList.add('victory-mode');
+                document.getElementById('final-locked').classList.add('hidden-screen');
+                document.getElementById('back-btn-final').classList.add('hidden-screen');
+                
+                const resultArea = document.getElementById('final-result-area');
+                resultArea.classList.remove('hidden-screen');
+                
+                resultArea.innerHTML = `
+                    <div class="victory-speech">
+                        <p style="color: white; font-size: 16px; line-height: 1.8; font-weight: bold;">
+                            "أبنائي وإخواني من المحققين الأبطال.. أقف اليوم أمامكم وبقايا التونة عالقة في شاربي، لأعلن أن المباحث المصرية -قصدي القططية- بخير! 🐾 لقد أثبتم أنكم جيل لا يهاب الأكواد ولا يخشى الميموري دامب.. بذكائكم كشفتم 'طارق' الخاين وحميتم سر القمر الدموي. بصفتي القائد الأعلى مياو المياو، قررت منحكم وسام 'الفأر الذهبي' من الطبقة الأولى! استلموا كود الخزنة فوراً، وأنا رايح أضرب علبة تونة احتفالاً بالنصر العظيم.. ميااااااااااو! 🏆🫡"
+                        </p>
                     </div>
-                    <div class="bg-green-600/20 border-2 border-green-500 p-6 rounded-2xl fade-in" style="animation-delay: 0.5s;">
-                        <h3 class="text-2xl font-bold text-green-500 mb-4">🏆 CASE CLOSED</h3>
-                        <p class="text-xs text-slate-300 mb-2 font-bold uppercase tech-font">Final Vault Code:</p>
-                        <div class="text-5xl font-bold text-white tracking-[1rem] bg-slate-900 py-4 rounded-2xl border border-slate-700 tech-font">742</div>
-                    </div>`;
+                    <div class="bg-green-600/30 border-2 border-green-400 p-8 rounded-3xl animate-bounce shadow-[0_0_50px_rgba(16,185,129,0.5)]">
+                        <h3 class="text-3xl font-bold text-green-400 mb-6 tracking-widest">🏆 CASE CLOSED</h3>
+                        <p class="text-xs text-white mb-2 font-bold opacity-80 uppercase tech-font">Final Vault Access Code:</p>
+                        <div class="text-6xl font-bold text-white tracking-[1.5rem] bg-black/50 py-6 rounded-2xl border border-green-500/50 tech-font">742</div>
+                    </div>
+                `;
             } else {
                 document.getElementById('main-body').classList.add('system-locked-bg');
                 document.getElementById('app-container').classList.add('hidden-screen');
@@ -608,13 +375,8 @@
             }
         }
 
-        function openImageViewer(src) {
-            document.getElementById('viewer-img').src = src;
-            document.getElementById('image-viewer-modal').classList.remove('hidden-screen');
-        }
-        function closeImageViewer() { 
-            document.getElementById('image-viewer-modal').classList.add('hidden-screen'); 
-        }
+        function openImageViewer(src) { document.getElementById('viewer-img').src = src; document.getElementById('image-viewer-modal').classList.remove('hidden-screen'); }
+        function closeImageViewer() { document.getElementById('image-viewer-modal').classList.add('hidden-screen'); }
     </script>
 </body>
 </html>
