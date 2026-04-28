@@ -22,24 +22,37 @@
         .glass-panel { background: rgba(15, 23, 42, 0.9); border: 1px solid #1e293b; backdrop-filter: blur(12px); border-radius: 1.5rem; }
         .tech-font { font-family: 'Share Tech Mono', monospace; direction: ltr; text-align: left; }
         
-        /* فقاعة شمشون */
+        /* فقاعة شمشون (القط الأسود) */
         .shamshoun-chat {
-            background: #1e293b; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
+            background: #0f172a; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
             padding: 15px 25px; position: relative; margin-top: 15px; margin-bottom: 10px; text-align: right;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
         .shamshoun-chat::after {
-            content: "🐾 شمشون:"; position: absolute; top: -12px; right: 20px;
-            background: #3b82f6; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
+            content: "🐈‍⬛ شمشون:"; position: absolute; top: -12px; right: 20px;
+            background: #1e3a8a; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
+            border: 1px solid #3b82f6;
         }
 
-        /* فقاعة فسفوس */
+        /* فقاعة فسفوس (القط الرصاصي) */
         .fasfous-chat {
-            background: #1e293b; border: 1px solid #10b981; border-radius: 20px 20px 20px 0;
+            background: #1e293b; border: 1px solid #94a3b8; border-radius: 20px 20px 20px 0;
             padding: 15px 25px; position: relative; margin-bottom: 15px; text-align: right;
         }
         .fasfous-chat::after {
-            content: "🐟 فسفوس:"; position: absolute; top: -12px; left: 20px;
-            background: #10b981; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
+            content: "🐈 فسفوس:"; position: absolute; top: -12px; left: 20px;
+            background: #475569; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
+            border: 1px solid #94a3b8;
+        }
+
+        /* فقاعات التلميحات الفردية جوه الصفحات */
+        .hint-chat {
+            background: #1e293b; border: 1px solid #3b82f6; border-radius: 20px 20px 0 20px;
+            padding: 15px 25px; position: relative; margin-bottom: 15px; text-align: right;
+        }
+        .hint-chat::after {
+            content: "🐈‍⬛ شمشون:"; position: absolute; top: -12px; right: 20px;
+            background: #1e3a8a; color: white; font-size: 12px; padding: 2px 10px; border-radius: 5px; font-weight: bold;
         }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
@@ -80,7 +93,7 @@
                     <p id="login-error" class="text-red-500 text-sm hidden-screen">بيانات الدخول غير صحيحة!</p>
                 </div>
             </div>
-            <div class="shamshoun-chat w-full shadow-xl" style="margin-top: 30px;">
+            <div class="hint-chat w-full shadow-xl" style="margin-top: 30px;">
                 <p style="color: white; font-size: 14px;">"مياو المياو باشا! اكتب الباسورد (meow) بسرعة عشان علبة التونة بتاعتي مستنية ورا المكتب."</p>
             </div>
         </div>
@@ -124,8 +137,8 @@
             <div class="glass-panel p-6 flex-1 overflow-y-auto">
                 <h2 class="text-xl font-bold text-red-500 mb-4 text-center tracking-widest tech-font">SD_RECOVERY</h2>
                 
-                <div class="shamshoun-chat mb-4">
-                    <p style="color: white; font-size: 13px;">"الشاشة دي بتوجع عيني.. الأرقام عمالة تنط زي الفيران، شوفلها صرفة أنا هروح أعمل قيلولة تحت الكرسي."</p>
+                <div class="hint-chat mb-4">
+                    <p style="color: white; font-size: 13px;">"الشاشة دي بتوجع عيني.. الأرقام عمالة تنط، شوفلها صرفة أنا هروح أعمل قيلولة تحت الكرسي."</p>
                 </div>
 
                 <div id="camera-locked" class="bg-black p-5 rounded-xl border-2 border-red-900 shadow-lg">
@@ -166,8 +179,8 @@
             <div class="glass-panel p-6">
                 <h2 class="text-xl font-bold text-blue-400 mb-4 text-center">هاتف الضحية</h2>
                 
-                <div class="shamshoun-chat mb-4">
-                    <p style="color: white; font-size: 13px;">"البشر دول معقدين أوي! تليفون ورسايل ووجع دماغ.. إحنا القطط بناكل وننام ومريحين بالنا، افتح البتاع ده خلينا نخلص."</p>
+                <div class="hint-chat mb-4">
+                    <p style="color: white; font-size: 13px;">"البشر دول معقدين أوي! إحنا القطط بناكل وننام، افتح البتاع ده خلينا نخلص."</p>
                 </div>
 
                 <div id="phone-locked" class="text-center">
@@ -191,8 +204,8 @@
             <div class="glass-panel p-6 flex-1 overflow-y-auto">
                 <h2 class="text-xl font-bold text-green-500 mb-4 text-center tracking-widest tech-font">DECRYPTION</h2>
                 
-                <div class="shamshoun-chat mb-4">
-                    <p style="color: white; font-size: 13px;">"الشاشة الخضرا دي مرعبة بجد! حاسس إن في كلب روت وايلر هيطلع منها.. فك الشفرة دي أنا جسمي قشعر."</p>
+                <div class="hint-chat mb-4">
+                    <p style="color: white; font-size: 13px;">"الشاشة الخضرا دي مرعبة بجد! حاسس إن في كلب روت وايلر هيطلع منها.. فك الشفرة أنا جسمي قشعر."</p>
                 </div>
 
                 <div id="email-locked" class="bg-black p-5 rounded-xl border-2 border-green-900 shadow-lg">
@@ -223,8 +236,8 @@
             <div class="glass-panel p-6 text-center border-t-4 border-blue-600">
                 <h2 class="text-2xl font-bold text-blue-400 mb-4">قاعدة بيانات المرور</h2>
                 
-                <div class="shamshoun-chat mb-6">
-                    <p style="color: white; font-size: 13px;">"عربيات ومرور ولوحات معدنية.. أنا مابحبش العربيات دي من ساعة ما ديلى اتزنق في باب ميكروباص وأنا صغير."</p>
+                <div class="hint-chat mb-6">
+                    <p style="color: white; font-size: 13px;">"عربيات ومرور ولوحات معدنية.. أنا مابحبش العربيات دي من ساعة ما ديلى اتزنق في باب ميكروباص."</p>
                 </div>
 
                 <div id="traffic-search">
@@ -273,12 +286,12 @@
         </div>
 
         <div id="screen-final" class="hidden-screen fade-in h-full flex flex-col justify-center">
-            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة</button>
+            <button onclick="nav('screen-dashboard')" class="text-slate-400 mb-4 flex items-center gap-2 text-sm"><i class="fa-solid fa-arrow-right"></i> عودة للوحة</button>
             <div id="final-container" class="glass-panel p-6 text-center border-t-4 border-red-600 bg-red-950/20">
                 <h2 class="text-2xl font-bold text-red-500 mb-2">CASE CLOSURE</h2>
                 
-                <div class="shamshoun-chat mb-4" style="text-align: center;">
-                    <p style="color: white; font-size: 13px;">"دي اللحظة الحاسمة يا مياو باشا! اكتب اسم القاتل الحقيقي، ركز أرجوك عشان لو غلطت السيستم هيقفل وهنطرد إحنا الاتنين في الشارع من غير دراي فود!"</p>
+                <div class="hint-chat mb-4" style="text-align: center;">
+                    <p style="color: white; font-size: 13px;">"دي اللحظة الحاسمة يا مياو باشا! اكتب اسم القاتل الحقيقي، ركز أرجوك عشان لو غلطت السيستم هيقفل وهنطرد إحنا الاتنين في الشارع!"</p>
                 </div>
 
                 <div class="bg-red-900/40 border border-red-600 p-3 rounded mb-6 text-left">
@@ -312,28 +325,35 @@
     </div>
 
     <script>
-        // محادثات طويلة بين شمشون وفسفوس للداشبورد
+        // محادثات طويلة ومخصصة للقط الأسود والرصاصي
         const catChats = [
             {
                 shamshoun: "مياو المياو باشا إنت لسه هنا؟ الجو حر أوي والكرش تقيل ومحتاج أمدده على السيراميك.",
                 fasfous: "يا عم ركز معاه خليه يخلص، أنا شامم ريحة دراي فود بالفراخ جاية من الشقة اللي جنبنا.",
-                shamshoun2: "دراي فود إيه؟ إحنا مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
-                fasfous2: "طب نام إنت وأنا هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك علطول."
+                shamshoun2: "دراي فود إيه؟ إحنا كقطط سودا شيك مبناكلش غير تونة قطع مقفولة.. الجريمة دي سدت نفسي أصلاً.",
+                fasfous2: "طب نام إنت يا سي الأسود، وأنا كقط رصاصي خفيف هراقب الشاشة، لو ظهر فار بيلعب في الماوس هقولك."
             },
             {
                 shamshoun: "الدم اللي في القضية دي كتير أوي.. بيفكرني بصلصة المكرونة بتاعة امبارح اللي وقعت في المطبخ.",
-                fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها.",
+                fasfous: "بطل قرف يا شمشون! أنا لسه واكل جبنة نستو ومش عايز أرجعها على فروتي الرصاصي النضيفة دي.",
                 shamshoun2: "إنت قط فرفور أصلاً، المباحث دي محتاجة قطط شوارع ناشفة زيي بتنام على كبابيت العربيات.",
-                fasfous2: "يا عم الناشف إنت، امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب."
+                fasfous2: "يا عم الناشف إنت، امبارح كلب لولو صغير هوهو عليك كنت هتفطس من الرعب وفروتك السودا وقفت."
             },
             {
                 shamshoun: "يا فسفوس، ركز في القضية بدل ما أنت باصص لدبانة طايرة في السقف من الصبح!",
-                fasfous: "يا عم سيبني، الدبانة دي المشتبه به رقم واحد بالنسبالي.. بتطير بشكل مريب.",
-                shamshoun2: "دي دبانة يا متخلف! ركز في صور الكاميرا والموبايلات المتقفلة دي يمكن نلاقي دليل.",
-                fasfous2: "دليل إيه؟ إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية."
+                fasfous: "يا عم سيبني، الدبانة دي المشتبه به رقم واحد بالنسبالي.. بتطير بشكل مريب ومحتاجة انقضاض.",
+                shamshoun2: "دي دبانة يا متخلف! ركز في صور الكاميرا والموبايلات دي يمكن نلاقي دليل نخلص بيه من الشغلانة دي.",
+                fasfous2: "دليل إيه؟ إحنا لو مسكنا الدبانة دي هنتغدى بيها ويبقى قفلنا القضية وكلنا بالهنا والشفا."
+            },
+            {
+                shamshoun: "أنا حاسس إن عيني زغلت من كتر التبحيق في الشاشات.. فروتي السودا بتسحب الحرارة كلها.",
+                fasfous: "أنا قولتلك خليك في الظلة، أنا فروتي الرصاصي عاكسة للإضاءة ومظبطة الأداء.",
+                shamshoun2: "عاكسة إيه بس، ده إنت شبه حتة السلك المواعين المبلولة.",
+                fasfous2: "سلك مواعين؟ طب والله لأسيبلك القضية وأروح أنام في كرتونة التلاجة الجديدة."
             }
         ];
 
+        // دي الدالة اللي بتغير المحادثة في الداشبورد
         function loadRandomChat() {
             const chatBox = document.getElementById('random-cat-chat');
             const randomIdx = Math.floor(Math.random() * catChats.length);
@@ -354,17 +374,21 @@
             `;
         }
 
+        // التعديل هنا: كل ما يرجع للداشبورد، يشغل المحادثة الجديدة!
         function nav(screenId) {
             document.querySelectorAll('.fade-in').forEach(s => s.classList.add('hidden-screen'));
             document.getElementById(screenId).classList.remove('hidden-screen');
             window.scrollTo(0,0);
+            
+            if (screenId === 'screen-dashboard') {
+                loadRandomChat();
+            }
         }
 
         function handleLogin() {
             const pass = document.getElementById('login-pass').value.trim().toLowerCase();
             if(pass === 'meow') {
-                nav('screen-dashboard');
-                loadRandomChat();
+                nav('screen-dashboard'); // الدالة nav هتشغل loadRandomChat أوتوماتيك
             }
             else document.getElementById('login-error').classList.remove('hidden-screen');
         }
